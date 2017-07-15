@@ -1,16 +1,3 @@
-# Summary 
-
-- [Notes](#section-id-1)
-  - [2017-07-15: Fix locale configuration on Linux servers](#section-id-3)
-  - [2017-07-15: summarizeMD](#section-id-32)
-  
-
-<div id='section-id-1'/>
-
-# Notes
-
-<div id='section-id-3'/>
-
 ## 2017-07-15: Fix locale configuration on Linux servers
 
 Problem: Warnings about wrong or missing locale configurations
@@ -40,11 +27,3 @@ Solution: Reconfiguration of the locales with dpkg
 ```bash
 sudo dpkg-reconfigure locales
 ```
-<div id='section-id-32'/>
-
-## 2017-07-15: summarizeMD
-
-summarizeMD is a ruby script to create a table of contents for Markdown files. The short [bash script](https://github.com/neikei/notes/tools/createReadme.sh) will merge all Markdown files before the run of [summarizeMD.rb](https://github.com/neikei/notes/tools/summarizeMD.rb).
-
-- [Script by velthune](https://github.com/velthune/summarizeMD)
-- [Improvements by Kreinoee](https://github.com/Kreinoee/summarizeMD)
