@@ -1,4 +1,4 @@
-## 2017-07-15: Fix locale configuration on Linux servers
+## 2017-07-15: Fix locale warnings on Linux servers
 
 Problem: Warnings about wrong or missing locale configurations
 

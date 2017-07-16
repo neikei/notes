@@ -1,8 +1,12 @@
 # Summary 
 
 - [Notes](#section-id-1)
-  - [2017-07-15: Fix locale configuration on Linux servers](#section-id-3)
-  - [2017-07-15: summarizeMD](#section-id-32)
+  - [2017-07-16: Command line convenience](#section-id-3)
+    - [~/.bashrc](#section-id-7)
+    - [~/.inputrc](#section-id-22)
+    - [~/.vimrc](#section-id-32)
+  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-48)
+  - [2017-07-15: summarizeMD](#section-id-77)
   
 
 <div id='section-id-1'/>
@@ -11,7 +15,60 @@
 
 <div id='section-id-3'/>
 
-## 2017-07-15: Fix locale configuration on Linux servers
+## 2017-07-16: Command line convenience
+
+Some useful code snippets to increase the convenience of command line tools.
+
+<div id='section-id-7'/>
+
+### ~/.bashrc
+
+- Prevent inadvertently crontab deletions
+
+```bash
+function crontab {
+    if [[ $* == *"-r"* ]];
+    then
+        echo "INFO: crontab -r is blocked to prevent inadvertently crontab deletions."
+    else
+        /usr/bin/crontab $*
+    fi
+}
+```
+
+<div id='section-id-22'/>
+
+### ~/.inputrc
+
+- Bash history search with page up and down
+
+```bash
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+```
+
+<div id='section-id-32'/>
+
+### ~/.vimrc
+
+- Color theme
+- Line numbers
+- Syntax highlighting
+
+```bash
+" Color theme for dark backgrounds
+:color desert
+
+" Show line numbers
+set number
+
+" Enable syntax highlighting
+syntax on
+```
+<div id='section-id-48'/>
+
+## 2017-07-15: Fix locale warnings on Linux servers
 
 Problem: Warnings about wrong or missing locale configurations
 
@@ -40,7 +97,7 @@ Solution: Reconfiguration of the locales with dpkg
 ```bash
 sudo dpkg-reconfigure locales
 ```
-<div id='section-id-32'/>
+<div id='section-id-77'/>
 
 ## 2017-07-15: summarizeMD
 
