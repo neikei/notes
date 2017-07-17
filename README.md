@@ -1,12 +1,13 @@
 # Summary 
 
 - [Notes](#section-id-1)
-  - [2017-07-16: Command line convenience](#section-id-3)
-    - [~/.bashrc](#section-id-7)
-    - [~/.inputrc](#section-id-22)
-    - [~/.vimrc](#section-id-32)
-  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-48)
-  - [2017-07-15: summarizeMD](#section-id-77)
+  - [2017-07-17: Git user switcher](#section-id-3)
+  - [2017-07-16: Command line convenience](#section-id-32)
+    - [~/.bashrc](#section-id-36)
+    - [~/.inputrc](#section-id-51)
+    - [~/.vimrc](#section-id-60)
+  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-76)
+  - [2017-07-15: summarizeMD](#section-id-105)
   
 
 <div id='section-id-1'/>
@@ -15,11 +16,42 @@
 
 <div id='section-id-3'/>
 
+## 2017-07-17: Git user switcher
+
+Simple bash script to switch between git accounts.
+
+```bash
+#!/bin/bash
+echo "";
+echo "1) <name_account1>";
+echo "2) <name_account2>";
+echo "";
+
+while true; do
+    read -p "Which account do you need? " choice
+    case $choice in
+        [1]* ) git config --global --replace-all user.name "<username_account1>"; git config --global user.email "<usermail_account1>"; break;;
+        [2]* ) git config --global --replace-all user.name "<username_account2>"; git config --global user.email "<username_account2>"; break;;
+        * ) echo "Please answer 1 or 2.";;
+    esac
+done
+
+mail=`git config --global user.email`;
+user=`git config --global user.name`;
+
+echo "";
+echo "############ Activated ############";
+echo "User: $user";
+echo "Mail: $mail";
+echo "";
+```
+<div id='section-id-32'/>
+
 ## 2017-07-16: Command line convenience
 
 Some useful code snippets to increase the convenience of command line tools.
 
-<div id='section-id-7'/>
+<div id='section-id-36'/>
 
 ### ~/.bashrc
 
@@ -36,7 +68,7 @@ function crontab {
 }
 ```
 
-<div id='section-id-22'/>
+<div id='section-id-51'/>
 
 ### ~/.inputrc
 
@@ -45,10 +77,9 @@ function crontab {
 ```bash
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
-
 ```
 
-<div id='section-id-32'/>
+<div id='section-id-60'/>
 
 ### ~/.vimrc
 
@@ -66,7 +97,7 @@ set number
 " Enable syntax highlighting
 syntax on
 ```
-<div id='section-id-48'/>
+<div id='section-id-76'/>
 
 ## 2017-07-15: Fix locale warnings on Linux servers
 
@@ -97,7 +128,7 @@ Solution: Reconfiguration of the locales with dpkg
 ```bash
 sudo dpkg-reconfigure locales
 ```
-<div id='section-id-77'/>
+<div id='section-id-105'/>
 
 ## 2017-07-15: summarizeMD
 
