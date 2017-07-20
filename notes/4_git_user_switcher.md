@@ -1,6 +1,6 @@
 ## 2017-07-17: Git user switcher
 
-Simple bash script to switch between git accounts.
+Bash script to switch between git accounts.
 
 ```bash
 #!/bin/bash
@@ -13,7 +13,7 @@ while true; do
     read -p "Which account do you need? " choice
     case $choice in
         [1]* ) git config --global --replace-all user.name "<username_account1>"; git config --global user.email "<usermail_account1>"; break;;
-        [2]* ) git config --global --replace-all user.name "<username_account2>"; git config --global user.email "<username_account2>"; break;;
+        [2]* ) git config --global --replace-all user.name "<username_account2>"; git config --global user.email "<usermail_account2>"; break;;
         * ) echo "Please answer 1 or 2.";;
     esac
 done

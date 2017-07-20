@@ -1,24 +1,81 @@
 # Summary 
 
 - [Notes](#section-id-1)
-  - [2017-07-17: Git user switcher](#section-id-3)
-  - [2017-07-16: Command line convenience](#section-id-32)
-    - [~/.bashrc](#section-id-36)
-    - [~/.inputrc](#section-id-51)
-    - [~/.vimrc](#section-id-60)
-  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-76)
-  - [2017-07-15: summarizeMD](#section-id-105)
+  - [2017-07-20: Syntaxchecks](#section-id-2)
+    - [PHP](#section-id-6)
+    - [YAML](#section-id-21)
+  - [2017-07-17: Git user switcher](#section-id-51)
+  - [2017-07-16: Command line convenience](#section-id-80)
+    - [~/.bashrc](#section-id-84)
+    - [~/.inputrc](#section-id-99)
+    - [~/.vimrc](#section-id-108)
+  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-124)
+  - [2017-07-15: summarizeMD](#section-id-153)
   
 
 <div id='section-id-1'/>
 
 # Notes
+<div id='section-id-2'/>
 
-<div id='section-id-3'/>
+## 2017-07-20: Syntaxchecks
+
+Bash snippets to check the syntax of other files.
+
+<div id='section-id-6'/>
+
+### PHP
+
+Syntaxchecks for PHP files.
+
+```bash
+# Desc: Syntaxcheck for one file
+php -l <file_name>
+
+# Desc: Syntaxcheck for all files in the current directory
+find . -name "*.php" -exec php -l {} \;
+
+# Desc: Syntaxcheck for all files in the last Git commit
+git diff --name-only --diff-filter=ACMR HEAD~1..HEAD | grep -E "^.*.php$" | xargs -i php -l {}
+```
+
+<div id='section-id-21'/>
+
+### YAML
+
+Syntaxchecks for YAML files.
+
+```bash
+# Desc: Syntaxcheck for one file
+ruby -e "require 'yaml';puts YAML.load_file('<file_name>')"
+
+# Desc: Syntaxcheck for all files in the current directory
+for file in `find . -name "*.yaml"`
+do
+  ruby -e "require 'yaml';puts YAML.load_file(\"$file\")" > /dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    echo "No syntax errors detected in $file"
+  else
+    echo "Some syntax errors detected in $file"
+  fi
+done
+
+# Desc: Syntaxcheck for all files in the last Git commit
+for file in `git diff --name-only --diff-filter=ACMR HEAD~1..HEAD | grep -E "^.*.yaml$"`
+do
+  ruby -e "require 'yaml';puts YAML.load_file(\"$file\")" > /dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    echo "No syntax errors detected in $file"
+  else
+    echo "Some syntax errors detected in $file"
+  fi
+done
+```
+<div id='section-id-51'/>
 
 ## 2017-07-17: Git user switcher
 
-Simple bash script to switch between git accounts.
+Bash script to switch between git accounts.
 
 ```bash
 #!/bin/bash
@@ -31,7 +88,7 @@ while true; do
     read -p "Which account do you need? " choice
     case $choice in
         [1]* ) git config --global --replace-all user.name "<username_account1>"; git config --global user.email "<usermail_account1>"; break;;
-        [2]* ) git config --global --replace-all user.name "<username_account2>"; git config --global user.email "<username_account2>"; break;;
+        [2]* ) git config --global --replace-all user.name "<username_account2>"; git config --global user.email "<usermail_account2>"; break;;
         * ) echo "Please answer 1 or 2.";;
     esac
 done
@@ -45,13 +102,13 @@ echo "User: $user";
 echo "Mail: $mail";
 echo "";
 ```
-<div id='section-id-32'/>
+<div id='section-id-80'/>
 
 ## 2017-07-16: Command line convenience
 
 Some useful code snippets to increase the convenience of command line tools.
 
-<div id='section-id-36'/>
+<div id='section-id-84'/>
 
 ### ~/.bashrc
 
@@ -68,7 +125,7 @@ function crontab {
 }
 ```
 
-<div id='section-id-51'/>
+<div id='section-id-99'/>
 
 ### ~/.inputrc
 
@@ -79,7 +136,7 @@ function crontab {
 "\e[6~": history-search-forward
 ```
 
-<div id='section-id-60'/>
+<div id='section-id-108'/>
 
 ### ~/.vimrc
 
@@ -97,7 +154,7 @@ set number
 " Enable syntax highlighting
 syntax on
 ```
-<div id='section-id-76'/>
+<div id='section-id-124'/>
 
 ## 2017-07-15: Fix locale warnings on Linux servers
 
@@ -128,7 +185,7 @@ Solution: Reconfiguration of the locales with dpkg
 ```bash
 sudo dpkg-reconfigure locales
 ```
-<div id='section-id-105'/>
+<div id='section-id-153'/>
 
 ## 2017-07-15: summarizeMD
 

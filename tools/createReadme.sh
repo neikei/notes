@@ -1,17 +1,14 @@
 #!/bin/bash
 
-# Headline h1
-echo "# Notes" > summarized.md
-echo "" >> summarized.md
-
-# Merge all Markdown files
-for file in `find . -name "*.md" ! -name "README.md" ! -name "summarized.md" | sort -r`
+# Notes
+echo "# Notes" > README.tmp
+for file in `find notes/ -name "*.md" | sort -r`
 do 
-  cat $file >> summarized.md
+  cat $file >> README.tmp
 done
 
 # Create summarized Markdown
-./tools/summarizeMD.rb -f summarized.md -o README.md
+./tools/summarizeMD.rb -f README.tmp -o README.md
 
 # Cleanup
-rm summarized.md
+rm README.tmp

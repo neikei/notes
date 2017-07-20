@@ -27,7 +27,7 @@ class MDUtils
 		temp_file = Tempfile.new("summarizeMd")
 
 		summary = generate_sumary_heading(options)
-		forbidden_words = ['Table of contents', 'define', 'pragma', '#!']
+		forbidden_words = ['Table of contents', 'define', 'pragma', '#!', '# Desc:']
 
 		File.open(filename, 'r') do |f|
 			if options.verbose 
