@@ -1,16 +1,17 @@
 # Summary 
 
 - [Notes](#section-id-1)
-  - [2017-07-20: Syntaxchecks](#section-id-2)
-    - [PHP](#section-id-6)
-    - [YAML](#section-id-21)
-  - [2017-07-17: Git user switcher](#section-id-51)
-  - [2017-07-16: Command line convenience](#section-id-80)
-    - [~/.bashrc](#section-id-84)
-    - [~/.inputrc](#section-id-99)
-    - [~/.vimrc](#section-id-108)
-  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-124)
-  - [2017-07-15: summarizeMD](#section-id-153)
+  - [2017-07-31: Vagrant Basics](#section-id-2)
+  - [2017-07-20: Syntaxchecks](#section-id-40)
+    - [PHP](#section-id-44)
+    - [YAML](#section-id-59)
+  - [2017-07-17: Git user switcher](#section-id-89)
+  - [2017-07-16: Command line convenience](#section-id-118)
+    - [~/.bashrc](#section-id-122)
+    - [~/.inputrc](#section-id-137)
+    - [~/.vimrc](#section-id-146)
+  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-162)
+  - [2017-07-15: summarizeMD](#section-id-191)
   
 
 <div id='section-id-1'/>
@@ -18,11 +19,51 @@
 # Notes
 <div id='section-id-2'/>
 
+## 2017-07-31: Vagrant Basics
+
+Basic commands for Vagrant.
+
+```bash
+# Desc: Show Vagrant Version
+vagrant --version
+
+# Desc: Show installed plugins and versions
+vagrant plugin list
+
+# Desc: Create Vagrantfile based on a box from https://app.vagrantup.com/
+vagrant init debian/stretch64
+
+# Desc: Start the virtual machine based on the Vagrantfile
+vagrant up
+
+# Desc: Show the status of the virtual machine
+vagrant status
+
+# Desc: Connect to the virtual machine
+vagrant ssh
+
+# Desc: Stop the virtual machine
+vagrant halt
+
+# Desc: Destroy the virtual machine
+vagrant destroy
+
+# Desc: Validate the Vagrantfile
+vagrant validate
+```
+
+Further links:
+
+- [Official Vagrant Documentation](https://www.vagrantup.com/docs/index.html)
+- [Vagrant installation guide for Windows](https://github.com/neikei/install-vagrant-on-windows)
+- [Vagrantbox for web development](https://github.com/neikei/vagrant-debian-ansible-lemp)
+<div id='section-id-40'/>
+
 ## 2017-07-20: Syntaxchecks
 
 Bash snippets to check the syntax of other files.
 
-<div id='section-id-6'/>
+<div id='section-id-44'/>
 
 ### PHP
 
@@ -39,7 +80,7 @@ find . -name "*.php" -exec php -l {} \;
 git diff --name-only --diff-filter=ACMR HEAD~1..HEAD | grep -E "^.*.php$" | xargs -i php -l {}
 ```
 
-<div id='section-id-21'/>
+<div id='section-id-59'/>
 
 ### YAML
 
@@ -71,7 +112,7 @@ do
   fi
 done
 ```
-<div id='section-id-51'/>
+<div id='section-id-89'/>
 
 ## 2017-07-17: Git user switcher
 
@@ -102,13 +143,13 @@ echo "User: $user";
 echo "Mail: $mail";
 echo "";
 ```
-<div id='section-id-80'/>
+<div id='section-id-118'/>
 
 ## 2017-07-16: Command line convenience
 
 Some useful code snippets to increase the convenience of command line tools.
 
-<div id='section-id-84'/>
+<div id='section-id-122'/>
 
 ### ~/.bashrc
 
@@ -125,7 +166,7 @@ function crontab {
 }
 ```
 
-<div id='section-id-99'/>
+<div id='section-id-137'/>
 
 ### ~/.inputrc
 
@@ -136,7 +177,7 @@ function crontab {
 "\e[6~": history-search-forward
 ```
 
-<div id='section-id-108'/>
+<div id='section-id-146'/>
 
 ### ~/.vimrc
 
@@ -154,7 +195,7 @@ set number
 " Enable syntax highlighting
 syntax on
 ```
-<div id='section-id-124'/>
+<div id='section-id-162'/>
 
 ## 2017-07-15: Fix locale warnings on Linux servers
 
@@ -185,7 +226,7 @@ Solution: Reconfiguration of the locales with dpkg
 ```bash
 sudo dpkg-reconfigure locales
 ```
-<div id='section-id-153'/>
+<div id='section-id-191'/>
 
 ## 2017-07-15: summarizeMD
 
