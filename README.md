@@ -1,23 +1,63 @@
 # Summary 
 
 - [Notes](#section-id-1)
-  - [2017-07-31: Vagrant Basics](#section-id-2)
-  - [2017-07-20: Syntaxchecks](#section-id-40)
-    - [PHP](#section-id-44)
-    - [YAML](#section-id-59)
-  - [2017-07-17: Git user switcher](#section-id-89)
-  - [2017-07-16: Command line convenience](#section-id-118)
-    - [~/.bashrc](#section-id-122)
-    - [~/.inputrc](#section-id-137)
-    - [~/.vimrc](#section-id-146)
-  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-162)
-  - [2017-07-15: summarizeMD](#section-id-191)
+  - [2017-08-01: Bamboo workaround for empty directories in artifacts](#section-id-2)
+  - [2017-07-31: Vagrant Basics](#section-id-39)
+  - [2017-07-20: Syntaxchecks](#section-id-77)
+    - [PHP](#section-id-81)
+    - [YAML](#section-id-96)
+  - [2017-07-17: Git user switcher](#section-id-126)
+  - [2017-07-16: Command line convenience](#section-id-155)
+    - [~/.bashrc](#section-id-159)
+    - [~/.inputrc](#section-id-174)
+    - [~/.vimrc](#section-id-183)
+  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-199)
+  - [2017-07-15: summarizeMD](#section-id-228)
   
 
 <div id='section-id-1'/>
 
 # Notes
 <div id='section-id-2'/>
+
+## 2017-08-01: Bamboo workaround for empty directories in artifacts
+
+**Problem:** Bamboo doesn't allow empty directories in artifacts. See [Bamboo issue tracking](https://jira.atlassian.com/browse/BAM-14358).
+
+**Workaround 1 - Logging:** Write empty directories into a file during the build process and re-create them during the deployment process.
+
+Build step:
+
+```bash
+# Desc: Find empty directory and write them into a logging file
+find . -empty -type d > empty_directories.txt
+```
+
+Deployment step:
+
+```bash
+# Desc: Create empty directories based on the logging file
+cat empty_directories.txt | while read directory; do
+    mkdir -p $directory
+done
+```
+
+**Workaround 2 - Archive:** Create an archive during the build process and extract it during the deployment process.
+
+Build step:
+
+```bash
+# Desc: Create tar.gz archive of all files and remove base files
+tar -czf artifact.tar.gz * --remove-files
+```
+
+Deployment step:
+
+```bash
+# Desc: Extract archive and remove it
+tar xfv artifact.tar.gz && rm artifact.tar.gz
+```
+<div id='section-id-39'/>
 
 ## 2017-07-31: Vagrant Basics
 
@@ -57,13 +97,13 @@ Further links:
 - [Official Vagrant Documentation](https://www.vagrantup.com/docs/index.html)
 - [Vagrant installation guide for Windows](https://github.com/neikei/install-vagrant-on-windows)
 - [Vagrantbox for web development](https://github.com/neikei/vagrant-debian-ansible-lemp)
-<div id='section-id-40'/>
+<div id='section-id-77'/>
 
 ## 2017-07-20: Syntaxchecks
 
 Bash snippets to check the syntax of other files.
 
-<div id='section-id-44'/>
+<div id='section-id-81'/>
 
 ### PHP
 
@@ -80,7 +120,7 @@ find . -name "*.php" -exec php -l {} \;
 git diff --name-only --diff-filter=ACMR HEAD~1..HEAD | grep -E "^.*.php$" | xargs -i php -l {}
 ```
 
-<div id='section-id-59'/>
+<div id='section-id-96'/>
 
 ### YAML
 
@@ -112,7 +152,7 @@ do
   fi
 done
 ```
-<div id='section-id-89'/>
+<div id='section-id-126'/>
 
 ## 2017-07-17: Git user switcher
 
@@ -143,13 +183,13 @@ echo "User: $user";
 echo "Mail: $mail";
 echo "";
 ```
-<div id='section-id-118'/>
+<div id='section-id-155'/>
 
 ## 2017-07-16: Command line convenience
 
 Some useful code snippets to increase the convenience of command line tools.
 
-<div id='section-id-122'/>
+<div id='section-id-159'/>
 
 ### ~/.bashrc
 
@@ -166,7 +206,7 @@ function crontab {
 }
 ```
 
-<div id='section-id-137'/>
+<div id='section-id-174'/>
 
 ### ~/.inputrc
 
@@ -177,7 +217,7 @@ function crontab {
 "\e[6~": history-search-forward
 ```
 
-<div id='section-id-146'/>
+<div id='section-id-183'/>
 
 ### ~/.vimrc
 
@@ -195,11 +235,11 @@ set number
 " Enable syntax highlighting
 syntax on
 ```
-<div id='section-id-162'/>
+<div id='section-id-199'/>
 
 ## 2017-07-15: Fix locale warnings on Linux servers
 
-Problem: Warnings about wrong or missing locale configurations
+**Problem:** Warnings about wrong or missing locale configurations
 
 ```bash
 perl: warning: Setting locale failed.
@@ -221,12 +261,12 @@ LANG = "en_US.UTF-8"
 perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
 ```
 
-Solution: Reconfiguration of the locales with dpkg
+**Solution:** Reconfiguration of the locales with dpkg
 
 ```bash
 sudo dpkg-reconfigure locales
 ```
-<div id='section-id-191'/>
+<div id='section-id-228'/>
 
 ## 2017-07-15: summarizeMD
 
