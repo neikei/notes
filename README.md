@@ -55,7 +55,7 @@ Deployment step:
 
 ```bash
 # Desc: Extract archive and remove it
-tar xfv artifact.tar.gz && rm artifact.tar.gz
+tar xzfv artifact.tar.gz && rm artifact.tar.gz
 ```
 <div id='section-id-39'/>
 
