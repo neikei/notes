@@ -1,25 +1,36 @@
 # Summary 
 
 - [Notes](#section-id-1)
-  - [2017-08-07: HipChat notifications](#section-id-2)
-  - [2017-08-01: Bamboo workaround for empty directories in artifacts](#section-id-20)
-  - [2017-07-31: Vagrant Basics](#section-id-57)
-  - [2017-07-20: Syntaxchecks](#section-id-95)
-    - [PHP](#section-id-99)
-    - [YAML](#section-id-114)
-  - [2017-07-17: Git user switcher](#section-id-144)
-  - [2017-07-16: Command line convenience](#section-id-173)
-    - [~/.bashrc](#section-id-177)
-    - [~/.inputrc](#section-id-192)
-    - [~/.vimrc](#section-id-201)
-  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-217)
-  - [2017-07-15: summarizeMD](#section-id-246)
+  - [2017-08-08: PHP-FPM not running after vagrant up](#section-id-2)
+  - [2017-08-07: HipChat notifications](#section-id-10)
+  - [2017-08-01: Bamboo workaround for empty directories in artifacts](#section-id-28)
+  - [2017-07-31: Vagrant Basics](#section-id-65)
+  - [2017-07-20: Syntaxchecks](#section-id-103)
+    - [PHP](#section-id-107)
+    - [YAML](#section-id-122)
+  - [2017-07-17: Git user switcher](#section-id-152)
+  - [2017-07-16: Command line convenience](#section-id-181)
+    - [~/.bashrc](#section-id-185)
+    - [~/.inputrc](#section-id-200)
+    - [~/.vimrc](#section-id-209)
+  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-225)
+  - [2017-07-15: summarizeMD](#section-id-254)
   
 
 <div id='section-id-1'/>
 
 # Notes
 <div id='section-id-2'/>
+
+## 2017-08-08: PHP-FPM not running after vagrant up
+
+The Vagrantboxes from the [vagrant website](https://app.vagrantup.com/debian/boxes/jessie64) are really good, but the PHP-FPM service didn't start properly during a vagrant up. So I did some research and found a cleanup script (/etc/init.d/mountall-bootclean.sh) which is executed during every startup and removes temporary directories like /var/run where the PHP-FPM socket was placed. Move the socket to a static directory or use the following provisioning command in your Vagrantfile to ensure the PHP-FPM is running after a vagrant up.
+
+```bash
+# Desc: Ensure PHP-FPM and Nginx restart after vagrant up
+config.vm.provision "shell", inline: "service php7.1-fpm restart && service nginx restart", run: "always"
+```
+<div id='section-id-10'/>
 
 ## 2017-08-07: HipChat notifications
 
@@ -39,7 +50,7 @@ curl --data "from=Sender&room_id=<room_api_id>&message=%28successful%29+HipChat+
 Further links:
 
 - [Official HipChat Documentation](https://www.hipchat.com/docs/apiv2/method/send_room_notification)
-<div id='section-id-20'/>
+<div id='section-id-28'/>
 
 ## 2017-08-01: Bamboo workaround for empty directories in artifacts
 
@@ -78,7 +89,7 @@ Deployment step:
 # Desc: Extract archive and remove it
 tar xzfv artifact.tar.gz && rm artifact.tar.gz
 ```
-<div id='section-id-57'/>
+<div id='section-id-65'/>
 
 ## 2017-07-31: Vagrant Basics
 
@@ -118,13 +129,13 @@ Further links:
 - [Official Vagrant Documentation](https://www.vagrantup.com/docs/index.html)
 - [Vagrant installation guide for Windows](https://github.com/neikei/install-vagrant-on-windows)
 - [Vagrantbox for web development](https://github.com/neikei/vagrant-debian-ansible-lemp)
-<div id='section-id-95'/>
+<div id='section-id-103'/>
 
 ## 2017-07-20: Syntaxchecks
 
 Bash snippets to check the syntax of other files.
 
-<div id='section-id-99'/>
+<div id='section-id-107'/>
 
 ### PHP
 
@@ -141,7 +152,7 @@ find . -name "*.php" -exec php -l {} \;
 git diff --name-only --diff-filter=ACMR HEAD~1..HEAD | grep -E "^.*.php$" | xargs -i php -l {}
 ```
 
-<div id='section-id-114'/>
+<div id='section-id-122'/>
 
 ### YAML
 
@@ -173,7 +184,7 @@ do
   fi
 done
 ```
-<div id='section-id-144'/>
+<div id='section-id-152'/>
 
 ## 2017-07-17: Git user switcher
 
@@ -204,13 +215,13 @@ echo "User: $user";
 echo "Mail: $mail";
 echo "";
 ```
-<div id='section-id-173'/>
+<div id='section-id-181'/>
 
 ## 2017-07-16: Command line convenience
 
 Some useful code snippets to increase the convenience of command line tools.
 
-<div id='section-id-177'/>
+<div id='section-id-185'/>
 
 ### ~/.bashrc
 
@@ -227,7 +238,7 @@ function crontab {
 }
 ```
 
-<div id='section-id-192'/>
+<div id='section-id-200'/>
 
 ### ~/.inputrc
 
@@ -238,7 +249,7 @@ function crontab {
 "\e[6~": history-search-forward
 ```
 
-<div id='section-id-201'/>
+<div id='section-id-209'/>
 
 ### ~/.vimrc
 
@@ -256,7 +267,7 @@ set number
 " Enable syntax highlighting
 syntax on
 ```
-<div id='section-id-217'/>
+<div id='section-id-225'/>
 
 ## 2017-07-15: Fix locale warnings on Linux servers
 
@@ -287,7 +298,7 @@ perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
 ```bash
 sudo dpkg-reconfigure locales
 ```
-<div id='section-id-246'/>
+<div id='section-id-254'/>
 
 ## 2017-07-15: summarizeMD
 
