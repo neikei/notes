@@ -1,24 +1,45 @@
 # Summary 
 
 - [Notes](#section-id-1)
-  - [2017-08-01: Bamboo workaround for empty directories in artifacts](#section-id-2)
-  - [2017-07-31: Vagrant Basics](#section-id-39)
-  - [2017-07-20: Syntaxchecks](#section-id-77)
-    - [PHP](#section-id-81)
-    - [YAML](#section-id-96)
-  - [2017-07-17: Git user switcher](#section-id-126)
-  - [2017-07-16: Command line convenience](#section-id-155)
-    - [~/.bashrc](#section-id-159)
-    - [~/.inputrc](#section-id-174)
-    - [~/.vimrc](#section-id-183)
-  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-199)
-  - [2017-07-15: summarizeMD](#section-id-228)
+  - [2017-08-07: HipChat notifications](#section-id-2)
+  - [2017-08-01: Bamboo workaround for empty directories in artifacts](#section-id-20)
+  - [2017-07-31: Vagrant Basics](#section-id-57)
+  - [2017-07-20: Syntaxchecks](#section-id-95)
+    - [PHP](#section-id-99)
+    - [YAML](#section-id-114)
+  - [2017-07-17: Git user switcher](#section-id-144)
+  - [2017-07-16: Command line convenience](#section-id-173)
+    - [~/.bashrc](#section-id-177)
+    - [~/.inputrc](#section-id-192)
+    - [~/.vimrc](#section-id-201)
+  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-217)
+  - [2017-07-15: summarizeMD](#section-id-246)
   
 
 <div id='section-id-1'/>
 
 # Notes
 <div id='section-id-2'/>
+
+## 2017-08-07: HipChat notifications
+
+Bash snippets for HipChat notifications.
+
+```bash
+# Desc: HipChat API v2
+curl -X POST \
+     -H "Content-Type: application/json" \
+     --data "{ \"color\":\"green\", \"message\":\"HipCHat API v2\", \"message_format\":\"text\" }" \
+     https://api.hipchat.com/v2/room/<room_api_id>/notification?auth_token=<auth_token>
+
+# Desc: HipChat API v1
+curl --data "from=Sender&room_id=<room_api_id>&message=%28successful%29+HipChat+API+v1+&message_format=text&color=green" "https://api.hipchat.com/v1/rooms/message?format=json&auth_token=<auth_token>"
+```
+
+Further links:
+
+- [Official HipChat Documentation](https://www.hipchat.com/docs/apiv2/method/send_room_notification)
+<div id='section-id-20'/>
 
 ## 2017-08-01: Bamboo workaround for empty directories in artifacts
 
@@ -57,7 +78,7 @@ Deployment step:
 # Desc: Extract archive and remove it
 tar xzfv artifact.tar.gz && rm artifact.tar.gz
 ```
-<div id='section-id-39'/>
+<div id='section-id-57'/>
 
 ## 2017-07-31: Vagrant Basics
 
@@ -97,13 +118,13 @@ Further links:
 - [Official Vagrant Documentation](https://www.vagrantup.com/docs/index.html)
 - [Vagrant installation guide for Windows](https://github.com/neikei/install-vagrant-on-windows)
 - [Vagrantbox for web development](https://github.com/neikei/vagrant-debian-ansible-lemp)
-<div id='section-id-77'/>
+<div id='section-id-95'/>
 
 ## 2017-07-20: Syntaxchecks
 
 Bash snippets to check the syntax of other files.
 
-<div id='section-id-81'/>
+<div id='section-id-99'/>
 
 ### PHP
 
@@ -120,7 +141,7 @@ find . -name "*.php" -exec php -l {} \;
 git diff --name-only --diff-filter=ACMR HEAD~1..HEAD | grep -E "^.*.php$" | xargs -i php -l {}
 ```
 
-<div id='section-id-96'/>
+<div id='section-id-114'/>
 
 ### YAML
 
@@ -152,7 +173,7 @@ do
   fi
 done
 ```
-<div id='section-id-126'/>
+<div id='section-id-144'/>
 
 ## 2017-07-17: Git user switcher
 
@@ -183,13 +204,13 @@ echo "User: $user";
 echo "Mail: $mail";
 echo "";
 ```
-<div id='section-id-155'/>
+<div id='section-id-173'/>
 
 ## 2017-07-16: Command line convenience
 
 Some useful code snippets to increase the convenience of command line tools.
 
-<div id='section-id-159'/>
+<div id='section-id-177'/>
 
 ### ~/.bashrc
 
@@ -206,7 +227,7 @@ function crontab {
 }
 ```
 
-<div id='section-id-174'/>
+<div id='section-id-192'/>
 
 ### ~/.inputrc
 
@@ -217,7 +238,7 @@ function crontab {
 "\e[6~": history-search-forward
 ```
 
-<div id='section-id-183'/>
+<div id='section-id-201'/>
 
 ### ~/.vimrc
 
@@ -235,7 +256,7 @@ set number
 " Enable syntax highlighting
 syntax on
 ```
-<div id='section-id-199'/>
+<div id='section-id-217'/>
 
 ## 2017-07-15: Fix locale warnings on Linux servers
 
@@ -266,7 +287,7 @@ perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
 ```bash
 sudo dpkg-reconfigure locales
 ```
-<div id='section-id-228'/>
+<div id='section-id-246'/>
 
 ## 2017-07-15: summarizeMD
 
