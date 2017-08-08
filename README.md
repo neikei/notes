@@ -1,7 +1,7 @@
 # Summary 
 
 - [Notes](#section-id-1)
-  - [2017-08-08: PHP-FPM not running after vagrant up](#section-id-2)
+  - [2017-08-08: PHP-FPM not running after vagrant up (Vagrantbox by bento)](#section-id-2)
   - [2017-08-07: HipChat notifications](#section-id-10)
   - [2017-08-01: Bamboo workaround for empty directories in artifacts](#section-id-28)
   - [2017-07-31: Vagrant Basics](#section-id-65)
@@ -22,9 +22,9 @@
 # Notes
 <div id='section-id-2'/>
 
-## 2017-08-08: PHP-FPM not running after vagrant up
+## 2017-08-08: PHP-FPM not running after vagrant up (Vagrantbox by bento)
 
-The Vagrantboxes from the [vagrant website](https://app.vagrantup.com/debian/boxes/jessie64) are really good, but the PHP-FPM service didn't start properly during a vagrant up. So I did some research and found a cleanup script (/etc/init.d/mountall-bootclean.sh) which is executed during every startup and removes temporary directories like /var/run where the PHP-FPM socket was placed. Move the socket to a static directory or use the following provisioning command in your Vagrantfile to ensure the PHP-FPM is running after a vagrant up.
+The Vagrantboxes from the [bento project](https://github.com/chef/bento) are really good, but the PHP-FPM service didn't start properly during a vagrant up. So I did some research and found a cleanup script (/etc/init.d/mountall-bootclean.sh) which is executed during every startup and removes temporary directories like /var/run where the PHP-FPM socket was placed. Move the socket to a static directory or use the following provisioning command in your Vagrantfile to ensure the PHP-FPM is running after a vagrant up.
 
 ```bash
 # Desc: Ensure PHP-FPM and Nginx restart after vagrant up
