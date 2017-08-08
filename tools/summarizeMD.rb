@@ -35,8 +35,13 @@ class MDUtils
 			end
 			f.each_line do |line|
 		    	if !(!line.start_with?("#") || forbidden_words.any? { |w| line =~ /#{w}/ }) 
-			    	title = line.gsub("#", "").strip
-				    href = "section-id-#{$.}"
+                    title = line.gsub("#", "").strip
+                    # Create meaningful anchor links
+                    date = line.delete('#:~/.()')
+                    date = date.lstrip
+                    date = date.gsub(" ", "-").strip
+                    href = "#{date}"
+                    # href = "section-id-#{$.}" # old href creation
 				    anchor = "<div id='#{href}'/>\n\n"
 				    temp_file.puts anchor + line
 				    summary += "  " * (line.count("#")-1) + "- [#{title}](\##{href})" + "\n"

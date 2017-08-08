@@ -1,26 +1,26 @@
 # Summary 
 
-- [Notes](#section-id-1)
-  - [2017-08-08: PHP-FPM not running after vagrant up (Vagrantbox by bento)](#section-id-2)
-  - [2017-08-07: HipChat notifications](#section-id-10)
-  - [2017-08-01: Bamboo workaround for empty directories in artifacts](#section-id-28)
-  - [2017-07-31: Vagrant Basics](#section-id-65)
-  - [2017-07-20: Syntaxchecks](#section-id-103)
-    - [PHP](#section-id-107)
-    - [YAML](#section-id-122)
-  - [2017-07-17: Git user switcher](#section-id-152)
-  - [2017-07-16: Command line convenience](#section-id-181)
-    - [~/.bashrc](#section-id-185)
-    - [~/.inputrc](#section-id-200)
-    - [~/.vimrc](#section-id-209)
-  - [2017-07-15: Fix locale warnings on Linux servers](#section-id-225)
-  - [2017-07-15: summarizeMD](#section-id-254)
+- [Notes](#Notes)
+  - [2017-08-08: PHP-FPM not running after vagrant up (Vagrantbox by bento)](#2017-08-08-PHP-FPM-not-running-after-vagrant-up-Vagrantbox-by-bento)
+  - [2017-08-07: HipChat notifications](#2017-08-07-HipChat-notifications)
+  - [2017-08-01: Bamboo workaround for empty directories in artifacts](#2017-08-01-Bamboo-workaround-for-empty-directories-in-artifacts)
+  - [2017-07-31: Vagrant Basics](#2017-07-31-Vagrant-Basics)
+  - [2017-07-20: Syntaxchecks](#2017-07-20-Syntaxchecks)
+    - [PHP](#PHP)
+    - [YAML](#YAML)
+  - [2017-07-17: Git user switcher](#2017-07-17-Git-user-switcher)
+  - [2017-07-16: Command line convenience](#2017-07-16-Command-line-convenience)
+    - [~/.bashrc](#bashrc)
+    - [~/.inputrc](#inputrc)
+    - [~/.vimrc](#vimrc)
+  - [2017-07-15: Fix locale warnings on Linux servers](#2017-07-15-Fix-locale-warnings-on-Linux-servers)
+  - [2017-07-15: summarizeMD](#2017-07-15-summarizeMD)
   
 
-<div id='section-id-1'/>
+<div id='Notes'/>
 
 # Notes
-<div id='section-id-2'/>
+<div id='2017-08-08-PHP-FPM-not-running-after-vagrant-up-Vagrantbox-by-bento'/>
 
 ## 2017-08-08: PHP-FPM not running after vagrant up (Vagrantbox by bento)
 
@@ -30,7 +30,7 @@ The Vagrantboxes from the [bento project](https://github.com/chef/bento) are rea
 # Desc: Ensure PHP-FPM and Nginx restart after vagrant up
 config.vm.provision "shell", inline: "service php7.1-fpm restart && service nginx restart", run: "always"
 ```
-<div id='section-id-10'/>
+<div id='2017-08-07-HipChat-notifications'/>
 
 ## 2017-08-07: HipChat notifications
 
@@ -50,7 +50,7 @@ curl --data "from=Sender&room_id=<room_api_id>&message=%28successful%29+HipChat+
 Further links:
 
 - [Official HipChat Documentation](https://www.hipchat.com/docs/apiv2/method/send_room_notification)
-<div id='section-id-28'/>
+<div id='2017-08-01-Bamboo-workaround-for-empty-directories-in-artifacts'/>
 
 ## 2017-08-01: Bamboo workaround for empty directories in artifacts
 
@@ -89,7 +89,7 @@ Deployment step:
 # Desc: Extract archive and remove it
 tar xzfv artifact.tar.gz && rm artifact.tar.gz
 ```
-<div id='section-id-65'/>
+<div id='2017-07-31-Vagrant-Basics'/>
 
 ## 2017-07-31: Vagrant Basics
 
@@ -129,13 +129,13 @@ Further links:
 - [Official Vagrant Documentation](https://www.vagrantup.com/docs/index.html)
 - [Vagrant installation guide for Windows](https://github.com/neikei/install-vagrant-on-windows)
 - [Vagrantbox for web development](https://github.com/neikei/vagrant-debian-ansible-lemp)
-<div id='section-id-103'/>
+<div id='2017-07-20-Syntaxchecks'/>
 
 ## 2017-07-20: Syntaxchecks
 
 Bash snippets to check the syntax of other files.
 
-<div id='section-id-107'/>
+<div id='PHP'/>
 
 ### PHP
 
@@ -152,7 +152,7 @@ find . -name "*.php" -exec php -l {} \;
 git diff --name-only --diff-filter=ACMR HEAD~1..HEAD | grep -E "^.*.php$" | xargs -i php -l {}
 ```
 
-<div id='section-id-122'/>
+<div id='YAML'/>
 
 ### YAML
 
@@ -184,7 +184,7 @@ do
   fi
 done
 ```
-<div id='section-id-152'/>
+<div id='2017-07-17-Git-user-switcher'/>
 
 ## 2017-07-17: Git user switcher
 
@@ -215,13 +215,13 @@ echo "User: $user";
 echo "Mail: $mail";
 echo "";
 ```
-<div id='section-id-181'/>
+<div id='2017-07-16-Command-line-convenience'/>
 
 ## 2017-07-16: Command line convenience
 
 Some useful code snippets to increase the convenience of command line tools.
 
-<div id='section-id-185'/>
+<div id='bashrc'/>
 
 ### ~/.bashrc
 
@@ -238,7 +238,7 @@ function crontab {
 }
 ```
 
-<div id='section-id-200'/>
+<div id='inputrc'/>
 
 ### ~/.inputrc
 
@@ -249,7 +249,7 @@ function crontab {
 "\e[6~": history-search-forward
 ```
 
-<div id='section-id-209'/>
+<div id='vimrc'/>
 
 ### ~/.vimrc
 
@@ -267,7 +267,7 @@ set number
 " Enable syntax highlighting
 syntax on
 ```
-<div id='section-id-225'/>
+<div id='2017-07-15-Fix-locale-warnings-on-Linux-servers'/>
 
 ## 2017-07-15: Fix locale warnings on Linux servers
 
@@ -298,7 +298,7 @@ perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
 ```bash
 sudo dpkg-reconfigure locales
 ```
-<div id='section-id-254'/>
+<div id='2017-07-15-summarizeMD'/>
 
 ## 2017-07-15: summarizeMD
 
