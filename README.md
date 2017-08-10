@@ -313,10 +313,17 @@ LANG = "en_US.UTF-8"
 perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
 ```
 
-**Solution:** Reconfiguration of the locales with dpkg
+**Solution 1: dpkg-reconfigure** Reconfiguration of the locales with dpkg
 
 ```bash
 sudo dpkg-reconfigure locales
+```
+
+**Solution 2: /etc/default/locale**
+
+```bash
+sudo su -
+echo LC_ALL="en_US.UTF-8" >> /etc/default/locale
 ```
 <div id='2017-07-15-summarizeMD'/>
 
