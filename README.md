@@ -1,6 +1,7 @@
 # Summary 
 
 - [Notes](#Notes)
+  - [2017-08-11: Ansible snippet to identify Vagrantboxes](#2017-08-11-Ansible-snippet-to-identify-Vagrantboxes)
   - [2017-08-10: Revert git commits](#2017-08-10-Revert-git-commits)
   - [2017-08-08: PHP-FPM not running after vagrant up (Vagrantbox by bento)](#2017-08-08-PHP-FPM-not-running-after-vagrant-up-Vagrantbox-by-bento)
   - [2017-08-07: HipChat notifications](#2017-08-07-HipChat-notifications)
@@ -21,6 +22,25 @@
 <div id='Notes'/>
 
 # Notes
+<div id='2017-08-11-Ansible-snippet-to-identify-Vagrantboxes'/>
+
+## 2017-08-11: Ansible snippet to identify Vagrantboxes
+
+```yaml
+- name: Check if Server is a Vagrantbox
+  shell: 'grep vagrant /etc/passwd | wc -l'
+  check_mode: no
+  changed_when: false
+  register: vagrantbox
+
+- name: Server is a vagrantbox
+  debug: msg="Server is a vagrantbox"
+  when: vagrantbox.stdout != "0"
+
+- name: Server is not a vagrantbox
+  debug: msg="Server is not a vagrantbox"
+  when: vagrantbox.stdout == "0"
+```
 <div id='2017-08-10-Revert-git-commits'/>
 
 ## 2017-08-10: Revert git commits
@@ -313,13 +333,13 @@ LANG = "en_US.UTF-8"
 perl: warning: Falling back to a fallback locale ("en_US.UTF-8").
 ```
 
-**Solution 1: dpkg-reconfigure** Reconfiguration of the locales with dpkg
+**Solution 1: dpkg-reconfigure:** Use dpkg-reconfigure to configure LC_ALL
 
 ```bash
 sudo dpkg-reconfigure locales
 ```
 
-**Solution 2: /etc/default/locale**
+**Solution 2: /etc/default/locale:** Set LC_ALL in the default local configuration
 
 ```bash
 sudo su -
