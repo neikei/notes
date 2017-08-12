@@ -1,6 +1,7 @@
 # Summary 
 
 - [Notes](#Notes)
+  - [2017-08-12: Install Oracle Java 8 on Debian Stretch](#2017-08-12-Install-Oracle-Java-8-on-Debian-Stretch)
   - [2017-08-11: Ansible snippet to identify Vagrantboxes](#2017-08-11-Ansible-snippet-to-identify-Vagrantboxes)
   - [2017-08-10: Revert git commits](#2017-08-10-Revert-git-commits)
   - [2017-08-08: PHP-FPM not running after vagrant up (Vagrantbox by bento)](#2017-08-08-PHP-FPM-not-running-after-vagrant-up-Vagrantbox-by-bento)
@@ -22,6 +23,25 @@
 <div id='Notes'/>
 
 # Notes
+<div id='2017-08-12-Install-Oracle-Java-8-on-Debian-Stretch'/>
+
+## 2017-08-12: Install Oracle Java 8 on Debian Stretch
+
+```bash
+# Desc: Install the network service dirmngr to manage certificate servers
+apt install dirmngr
+
+# Desc: Add the repository and the repository key
+echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" > /etc/apt/sources.list.d/webupd8team-java.list
+echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" >> /etc/apt/sources.list.d/webupd8team-java.list
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+
+# Desc: Update package informations
+apt update
+
+# Desc: Install Java
+apt install oracle-java8-installer
+```
 <div id='2017-08-11-Ansible-snippet-to-identify-Vagrantboxes'/>
 
 ## 2017-08-11: Ansible snippet to identify Vagrantboxes
