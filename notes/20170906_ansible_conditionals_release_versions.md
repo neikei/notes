@@ -17,12 +17,12 @@ Ansible tasks examples:
 
 Jinja2 template examples for the [template module](http://docs.ansible.com/ansible/latest/template_module.html):
 
-```jinja2
+```yaml
 {% if ansible_distribution_major_version == '8' %}
 Debian 8
 {% endif %}
 
-{% if ansible_distribution_major_version == '8' or ansible_distribution_major_version == '8' %}
+{% if ansible_distribution_major_version == '8' or ansible_distribution_major_version == '9' %}
 Debian 8 or Debian 9
 {% endif %}
 ```
