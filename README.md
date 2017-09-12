@@ -363,6 +363,7 @@ Some useful code snippets to increase the convenience of command line tools.
 ### ~/.bashrc
 
 - Prevent inadvertently crontab deletions
+- Add execution time to bash history
 
 ```bash
 function crontab {
@@ -373,6 +374,8 @@ function crontab {
         /usr/bin/crontab $*
     fi
 }
+
+HISTTIMEFORMAT="%d.%m.%y %T "
 ```
 
 <div id='inputrc'/>
