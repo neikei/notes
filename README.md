@@ -1,6 +1,7 @@
 # Summary 
 
 - [Notes](#Notes)
+  - [2017-09-14: Bamboo htaccess authentication errors](#2017-09-14-Bamboo-htaccess-authentication-errors)
   - [2017-09-06: Ansible conditionals for release versions](#2017-09-06-Ansible-conditionals-for-release-versions)
   - [2017-08-21: Database replication status](#2017-08-21-Database-replication-status)
   - [2017-08-14: Validate archives](#2017-08-14-Validate-archives)
@@ -26,6 +27,15 @@
 <div id='Notes'/>
 
 # Notes
+<div id='2017-09-14-Bamboo-htaccess-authentication-errors'/>
+
+## 2017-09-14: Bamboo htaccess authentication errors
+
+Bamboo .htaccess restricted authentication will be forwarded to the Tomcat which can cause some authentication errors. It is possible to prevent the forwarding with the following proxy header setting in the Nginx configuration.
+
+```bash
+proxy_set_header   Authorization "";
+```
 <div id='2017-09-06-Ansible-conditionals-for-release-versions'/>
 
 ## 2017-09-06: Ansible conditionals for release versions
