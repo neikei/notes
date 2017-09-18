@@ -1,6 +1,7 @@
 # Summary 
 
 - [Notes](#Notes)
+  - [2017-09-18: Deploy archives with Bamboo and PHP Deployer](#2017-09-18-Deploy-archives-with-Bamboo-and-PHP-Deployer)
   - [2017-09-15: Use PHP Deployer with Bamboo](#2017-09-15-Use-PHP-Deployer-with-Bamboo)
   - [2017-09-14: Bamboo htaccess authentication errors](#2017-09-14-Bamboo-htaccess-authentication-errors)
   - [2017-09-06: Ansible conditionals for release versions](#2017-09-06-Ansible-conditionals-for-release-versions)
@@ -28,6 +29,40 @@
 <div id='Notes'/>
 
 # Notes
+<div id='2017-09-18-Deploy-archives-with-Bamboo-and-PHP-Deployer'/>
+
+## 2017-09-18: Deploy archives with Bamboo and PHP Deployer
+
+Bamboo task to create the archive during the deployment process.
+
+```bash
+# Desc: Create tarball and remove archived files
+tar cfz artifact.tar.gz * --remove-files
+```
+
+PHP Deployer task to extract the archive on a remote server.
+
+```php
+// Extract archive on a remote server
+desc('Extract archive');
+task('archive:extract', function () {
+    run('cd {{ release_path }} && tar xf artifact.tar.gz && rm artifact.tar.gz');
+});
+
+// Deploy process
+desc('Deploy');
+task('deploy', [
+    'deploy:prepare',
+    'deploy:lock',
+    'deploy:release',
+    'rsync',
+    'archive:extract',
+    'deploy:symlink',
+    'deploy:unlock',
+    'cleanup',
+    'success'
+]);
+```
 <div id='2017-09-15-Use-PHP-Deployer-with-Bamboo'/>
 
 ## 2017-09-15: Use PHP Deployer with Bamboo
