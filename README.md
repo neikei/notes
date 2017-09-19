@@ -1,6 +1,7 @@
 # Summary 
 
 - [Notes](#Notes)
+  - [2017-09-19: Bamboo centralized syntaxchecks](#2017-09-19-Bamboo-centralized-syntaxchecks)
   - [2017-09-18: Deploy archives with Bamboo and PHP Deployer](#2017-09-18-Deploy-archives-with-Bamboo-and-PHP-Deployer)
   - [2017-09-15: Use PHP Deployer with Bamboo](#2017-09-15-Use-PHP-Deployer-with-Bamboo)
   - [2017-09-14: Bamboo htaccess authentication errors](#2017-09-14-Bamboo-htaccess-authentication-errors)
@@ -29,6 +30,25 @@
 <div id='Notes'/>
 
 # Notes
+<div id='2017-09-19-Bamboo-centralized-syntaxchecks'/>
+
+## 2017-09-19: Bamboo centralized syntaxchecks
+
+Installation of syntaxchecks for web applications on a Linux Bamboo server.
+
+```bash
+# Desc: Install syntaxchecks in the home path of the bamboo application user
+su - bamboo
+cd ~
+git clone https://github.com/neikei/syntaxchecks.git
+```
+
+Bamboo task to execute the sytaxchecks during the build process.
+
+```bash
+# Desc: Execute syntaxchecks to validate all changed files in the last commit and stop in case of an error
+~/syntaxchecks/syntaxchecks.sh -p "${bamboo.build.working.directory}" -c 1 -s
+```
 <div id='2017-09-18-Deploy-archives-with-Bamboo-and-PHP-Deployer'/>
 
 ## 2017-09-18: Deploy archives with Bamboo and PHP Deployer
