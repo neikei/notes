@@ -1,6 +1,8 @@
 # Summary 
 
+- [Hint](#Hint)
 - [Notes](#Notes)
+  - [2017-09-21: Bash condition to check directories](#2017-09-21-Bash-condition-to-check-directories)
   - [2017-09-19: Bamboo centralized syntaxchecks](#2017-09-19-Bamboo-centralized-syntaxchecks)
   - [2017-09-18: Deploy archives with Bamboo and PHP Deployer](#2017-09-18-Deploy-archives-with-Bamboo-and-PHP-Deployer)
   - [2017-09-15: Use PHP Deployer with Bamboo](#2017-09-15-Use-PHP-Deployer-with-Bamboo)
@@ -25,11 +27,30 @@
     - [~/.vimrc](#vimrc)
   - [2017-07-15: Fix locale warnings on Linux servers](#2017-07-15-Fix-locale-warnings-on-Linux-servers)
   - [2017-07-15: summarizeMD](#2017-07-15-summarizeMD)
+- [License](#License)
   
 
+<div id='Hint'/>
+
+# Hint
+
+Please check the [Github repository](https://github.com/neikei/notes) if a code block isn't displayed properly.
 <div id='Notes'/>
 
 # Notes
+<div id='2017-09-21-Bash-condition-to-check-directories'/>
+
+## 2017-09-21: Bash condition to check directories
+
+The tilde as indicator for the home directory isn't interpreted right during a bash condition validation.
+
+```bash
+# Desc: problematic condition
+if [ -d "~/directory" ]; then echo "... is a directory."; fi
+
+# Desc: working condition
+if [ -d "$HOME/directory" ]; then echo "... is a directory."; fi
+```
 <div id='2017-09-19-Bamboo-centralized-syntaxchecks'/>
 
 ## 2017-09-19: Bamboo centralized syntaxchecks
@@ -575,3 +596,8 @@ summarizeMD is a ruby script to create a table of contents for Markdown files. T
 
 - [Script by velthune](https://github.com/velthune/summarizeMD)
 - [Improvements by Kreinoee](https://github.com/Kreinoee/summarizeMD)
+<div id='License'/>
+
+# License
+
+This are just a few notes without any warranty. Please check the license [here](https://github.com/neikei/notes/blob/master/LICENSE).
