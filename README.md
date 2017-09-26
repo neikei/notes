@@ -2,6 +2,7 @@
 
 - [Hint](#Hint)
 - [Notes](#Notes)
+  - [2017-09-26: Jenkins centralized syntaxchecks](#2017-09-26-Jenkins-centralized-syntaxchecks)
   - [2017-09-21: Bash condition to check directories](#2017-09-21-Bash-condition-to-check-directories)
   - [2017-09-19: Bamboo centralized syntaxchecks](#2017-09-19-Bamboo-centralized-syntaxchecks)
   - [2017-09-18: Deploy archives with Bamboo and PHP Deployer](#2017-09-18-Deploy-archives-with-Bamboo-and-PHP-Deployer)
@@ -38,6 +39,25 @@ Please check the [Github repository](https://github.com/neikei/notes) if a code 
 <div id='Notes'/>
 
 # Notes
+<div id='2017-09-26-Jenkins-centralized-syntaxchecks'/>
+
+## 2017-09-26: Jenkins centralized syntaxchecks
+
+Installation of syntaxchecks for web applications on a Linux Jenkins server.
+
+```bash
+# Desc: Install syntaxchecks in the home path of the jenkins application user
+su - jenkins
+cd ~
+git clone https://github.com/neikei/syntaxchecks.git
+```
+
+Jenkins task to execute the sytaxchecks during the build process.
+
+```bash
+# Desc: Execute syntaxchecks to validate all changed files in the last commit and stop in case of an error
+~/syntaxchecks/syntaxchecks.sh -p "`pwd`" -c 1 -s
+```
 <div id='2017-09-21-Bash-condition-to-check-directories'/>
 
 ## 2017-09-21: Bash condition to check directories
