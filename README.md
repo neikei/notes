@@ -2,6 +2,7 @@
 
 - [Hint](#Hint)
 - [Notes](#Notes)
+  - [2017-10-04: Debian ntpdate time synchronization](#2017-10-04-Debian-ntpdate-time-synchronization)
   - [2017-09-26: Jenkins centralized syntaxchecks](#2017-09-26-Jenkins-centralized-syntaxchecks)
   - [2017-09-21: Bash condition to check directories](#2017-09-21-Bash-condition-to-check-directories)
   - [2017-09-19: Bamboo centralized syntaxchecks](#2017-09-19-Bamboo-centralized-syntaxchecks)
@@ -39,6 +40,23 @@ Please check the [Github repository](https://github.com/neikei/notes) if a code 
 <div id='Notes'/>
 
 # Notes
+<div id='2017-10-04-Debian-ntpdate-time-synchronization'/>
+
+## 2017-10-04: Debian ntpdate time synchronization
+
+Configure ntpdate to synchronize the time with the internet hourly. Especially recommended for VMs in a network without a self-hosted ntp server. 
+
+```bash
+# Desc: Remove ntp if it is installed
+sudo apt remove ntp
+
+# Desc: Install ntpdate
+sudo apt install ntpdate
+
+# Desc: Configure cron to resync the time hourly
+echo $'#!/bin/bash\n/usr/sbin/ntpdate -s pool.ntp.org' | sudo tee /etc/cron.hourly/ntpdate
+sudo chmod +x /etc/cron.hourly/ntpdate
+```
 <div id='2017-09-26-Jenkins-centralized-syntaxchecks'/>
 
 ## 2017-09-26: Jenkins centralized syntaxchecks
