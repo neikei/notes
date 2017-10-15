@@ -2,6 +2,7 @@
 
 - [Hint](#Hint)
 - [Notes](#Notes)
+  - [2017-10-15: Ubuntu optimize jpeg images](#2017-10-15-Ubuntu-optimize-jpeg-images)
   - [2017-10-04: Debian ntpdate time synchronization](#2017-10-04-Debian-ntpdate-time-synchronization)
   - [2017-09-26: Jenkins centralized syntaxchecks](#2017-09-26-Jenkins-centralized-syntaxchecks)
   - [2017-09-21: Bash condition to check directories](#2017-09-21-Bash-condition-to-check-directories)
@@ -40,6 +41,29 @@ Please check the [Github repository](https://github.com/neikei/notes) if a code 
 <div id='Notes'/>
 
 # Notes
+<div id='2017-10-15-Ubuntu-optimize-jpeg-images'/>
+
+## 2017-10-15: Ubuntu optimize jpeg images
+
+The jpegoptim tool optimizes jpg images and compresses them without loss of quality.
+
+```bash
+# Desc: Install jpegoptim
+sudo apt install jpegoptim
+
+# Desc: Optimize a single image. Caution: this will overwrite the original image.
+jpegoptim ./pictures/testimage.jpg
+./Pictures/testimage.jpg 3120x4160 24bit N Exif  [OK] 841351 --> 729471 bytes (13.30%), optimized.
+
+# Desc: Optimize a single file and store it in a different directory to keep the original image.
+jpegoptim ./pictures/testimage.jpg --dest="/tmp/"
+./Pictures/testimage.jpg 3120x4160 24bit N Exif  [OK] 841351 --> 729471 bytes (13.30%), optimized.
+
+# Desc: Optimize images of a find result
+find . -type f -regextype posix-extended -regex "^.*\.(jpg|jpeg|JPG|JPEG)$" -exec jpegoptim {} \;
+./Pictures/testimage1.jpg 3120x4160 24bit N Exif  [OK] 841351 --> 729471 bytes (13.30%), optimized.
+./Pictures/testimage2.jpg 3120x4160 24bit N Exif  [OK] 841351 --> 729471 bytes (13.30%), optimized.
+```
 <div id='2017-10-04-Debian-ntpdate-time-synchronization'/>
 
 ## 2017-10-04: Debian ntpdate time synchronization
