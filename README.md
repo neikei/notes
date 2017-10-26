@@ -2,6 +2,8 @@
 
 - [Hint](#Hint)
 - [Notes](#Notes)
+  - [2017-10-26: Bamboo branch based configs](#2017-10-26-Bamboo-branch-based-configs)
+  - [2017-10-20: SystemD multi spawn processes](#2017-10-20-SystemD-multi-spawn-processes)
   - [2017-10-15: Ubuntu optimize jpeg images](#2017-10-15-Ubuntu-optimize-jpeg-images)
   - [2017-10-04: Debian ntpdate time synchronization](#2017-10-04-Debian-ntpdate-time-synchronization)
   - [2017-09-26: Jenkins centralized syntaxchecks](#2017-09-26-Jenkins-centralized-syntaxchecks)
@@ -41,6 +43,29 @@ Please check the [Github repository](https://github.com/neikei/notes) if a code 
 <div id='Notes'/>
 
 # Notes
+<div id='2017-10-26-Bamboo-branch-based-configs'/>
+
+## 2017-10-26: Bamboo branch based configs
+
+Bamboo task for branch based configuration replacements. The following example will only replace the config if the current branch is develop.
+
+```bash
+#!/bin/bash
+
+current_branch_name=`git rev-parse --abbrev-ref HEAD`
+echo "==> Branch: $current_branch_name"
+
+if [[ $current_branch_name =~ ^develop$ ]]; then
+
+    sed -i "s/placeholder/value/g" app/config/parameters.yml.dist
+
+fi
+```
+<div id='2017-10-20-SystemD-multi-spawn-processes'/>
+
+## 2017-10-20: SystemD multi spawn processes
+
+This great [documentation on StackExchange](https://unix.stackexchange.com/questions/288236/have-systemd-spawn-n-processes#288310) explains how to spawn multi processes with SystemD.
 <div id='2017-10-15-Ubuntu-optimize-jpeg-images'/>
 
 ## 2017-10-15: Ubuntu optimize jpeg images
