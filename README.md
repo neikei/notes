@@ -2,6 +2,8 @@
 
 - [Hint](#Hint)
 - [Notes](#Notes)
+  - [2017-10-28: Pin ansible apt package](#2017-10-28-Pin-ansible-apt-package)
+  - [2017-10-28: Install specific apt package version](#2017-10-28-Install-specific-apt-package-version)
   - [2017-10-26: Bamboo branch based configs](#2017-10-26-Bamboo-branch-based-configs)
   - [2017-10-20: SystemD multi spawn processes](#2017-10-20-SystemD-multi-spawn-processes)
   - [2017-10-15: Ubuntu optimize jpeg images](#2017-10-15-Ubuntu-optimize-jpeg-images)
@@ -43,6 +45,54 @@ Please check the [Github repository](https://github.com/neikei/notes) if a code 
 <div id='Notes'/>
 
 # Notes
+<div id='2017-10-28-Pin-ansible-apt-package'/>
+
+## 2017-10-28: Pin ansible apt package
+
+The simplest solution is apt-mark, but the solution with apt preferences is more flexible.
+
+**apt-mark:** Prevent the package from being automatically installed, upgraded or removed.
+
+```bash
+# Desc: Set ansible package to hold
+sudo apt-mark hold ansible
+
+# Desc: Show packages on hold
+sudo apt-mark showhold
+   ansible
+
+# Desc: Set ansible package to unhold
+sudo apt-mark unhold ansible
+```
+
+**apt preferences:** Pin the package to a specific version, but allow apt to update the package  with patches.
+
+```bash
+# Desc: Pin ansible package
+echo "Package: ansible
+Pin: version 2.1.*
+Pin-Priority: 1000" | sudo tee /etc/apt/preferences.d/ansible
+
+# Desc: Unpin ansible package
+sudo rm /etc/apt/preferences.d/ansible
+```
+<div id='2017-10-28-Install-specific-apt-package-version'/>
+
+## 2017-10-28: Install specific apt package version
+
+Example of the ansible package installation on Ubuntu.
+
+```bash
+# Desc: Check available ansible packages
+sudo apt-cache madison ansible
+   ansible | 2.4.1.0-1ppa~xenial | http://ppa.launchpad.net/ansible/ansible/ubuntu xenial/main amd64 Packages
+   ansible | 2.4.1.0-1ppa~xenial | http://ppa.launchpad.net/ansible/ansible/ubuntu xenial/main i386 Packages
+   ansible | 2.1.1.0-1~ubuntu16.04.1 | http://de.archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages
+   ansible | 2.1.1.0-1~ubuntu16.04.1 | http://de.archive.ubuntu.com/ubuntu xenial-backports/universe i386 Packages
+
+# Desc: Install the required ansible package
+sudo apt install ansible=2.1.1.0-1~ubuntu16.04.1
+```
 <div id='2017-10-26-Bamboo-branch-based-configs'/>
 
 ## 2017-10-26: Bamboo branch based configs
