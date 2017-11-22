@@ -2,6 +2,9 @@
 
 - [Hint](#Hint)
 - [Notes](#Notes)
+  - [2017-11-22: System CLI monitoring](#2017-11-22-System-CLI-monitoring)
+  - [2017-11-21: System versions](#2017-11-21-System-versions)
+  - [2017-11-11: Search and replace strings in files](#2017-11-11-Search-and-replace-strings-in-files)
   - [2017-10-28: Pin ansible apt package](#2017-10-28-Pin-ansible-apt-package)
   - [2017-10-28: Install specific apt package version](#2017-10-28-Install-specific-apt-package-version)
   - [2017-10-26: Bamboo branch based configs](#2017-10-26-Bamboo-branch-based-configs)
@@ -45,6 +48,99 @@ Please check the [Github repository](https://github.com/neikei/notes) if a code 
 <div id='Notes'/>
 
 # Notes
+<div id='2017-11-22-System-CLI-monitoring'/>
+
+## 2017-11-22: System CLI monitoring
+
+CLI tools for monitoring the system.
+
+```bash
+# Desc: Overview of CPU, RAM, load and processes
+top
+
+# Desc: Like top but with interactive fitlers and coloured
+htop
+
+# Desc: MySQL processes
+mytop
+
+# Desc: Disk usage in human-readable format
+df -h
+
+# Desc: Read and write operations
+iotop
+
+# Desc: Network traffic
+iftop
+
+# Desc: Network packets
+iptraf
+
+# Desc: Dump network traffic
+tcpdump
+```
+<div id='2017-11-21-System-versions'/>
+
+## 2017-11-21: System versions
+
+Snippets to check system versions on debian based systems.
+
+```bash
+# Desc: Show kernel version
+neikei@workstation:~$ uname -r
+4.4.0-67-generic
+
+# Desc: Show debian version
+neikei@workstation:~$ cat /etc/debian_version
+stretch/sid
+
+# Desc: Show os release
+neikei@workstation:~$ cat /etc/os-release
+NAME="Ubuntu"
+VERSION="16.04.3 LTS (Xenial Xerus)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 16.04.3 LTS"
+VERSION_ID="16.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+VERSION_CODENAME=xenial
+UBUNTU_CODENAME=xenial
+
+# Desc: Use lsb_release to check os version
+neikei@workstation:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 16.04.3 LTS
+Release:    16.04
+Codename:   xenial
+```
+<div id='2017-11-11-Search-and-replace-strings-in-files'/>
+
+## 2017-11-11: Search and replace strings in files
+
+Just some basic snippets to search and replace in text files e.g. config files with sed and vim.
+
+**sed**
+
+```bash
+# Desc: Search and replace in the whole file
+sed -i -e 's/search/replace/g' file.txt
+```
+
+**vim**
+
+```bash
+# Desc: Open your file with vim
+vim file.txt
+
+# Desc: Search and replace only next match after the current cursor position
+:s/search/replace/g
+
+# Desc: Search and replace in the whole file
+:%s/search/replace/g
+```
 <div id='2017-10-28-Pin-ansible-apt-package'/>
 
 ## 2017-10-28: Pin ansible apt package
