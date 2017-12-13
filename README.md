@@ -2,6 +2,7 @@
 
 - [Hint](#Hint)
 - [Notes](#Notes)
+  - [2017-12-13: Simple disk usage monitoring](#2017-12-13-Simple-disk-usage-monitoring)
   - [2017-12-06: Screenfetch](#2017-12-06-Screenfetch)
   - [2017-12-01: Vagrant NFS share on Ubuntu](#2017-12-01-Vagrant-NFS-share-on-Ubuntu)
   - [2017-11-27: Locate, partition and create filesystem on new disk](#2017-11-27-Locate,-partition-and-create-filesystem-on-new-disk)
@@ -52,6 +53,22 @@ Please check the [Github repository](https://github.com/neikei/notes) if a code 
 <div id='Notes'/>
 
 # Notes
+<div id='2017-12-13-Simple-disk-usage-monitoring'/>
+
+## 2017-12-13: Simple disk usage monitoring
+
+Bash snippet to monitor disk usage on non-production systems.
+
+```bash
+#!/bin/bash
+USED=`df /dev/sda1 | awk '{print $5}' | sed -ne 2p | cut -d"%" -f1`
+if [ "$USED" -gt 90 ]; then
+    echo "NOT OK: disk usage is above $USED percent."
+    # Add some alerting via mail or chat here
+else
+    echo "OK: $USED disk space used."
+fi
+```
 <div id='2017-12-06-Screenfetch'/>
 
 ## 2017-12-06: Screenfetch
