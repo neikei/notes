@@ -5,25 +5,25 @@ The simplest solution is apt-mark, but the solution with apt preferences is more
 **apt-mark:** Prevent the package from being automatically installed, upgraded or removed.
 
 ```bash
-# Desc: Set ansible package to hold
+#: Set ansible package to hold
 sudo apt-mark hold ansible
 
-# Desc: Show packages on hold
+#: Show packages on hold
 sudo apt-mark showhold
    ansible
 
-# Desc: Set ansible package to unhold
+#: Set ansible package to unhold
 sudo apt-mark unhold ansible
 ```
 
 **apt preferences:** Pin the package to a specific version, but allow apt to update the package  with patches.
 
 ```bash
-# Desc: Pin ansible package
+#: Pin ansible package
 echo "Package: ansible
 Pin: version 2.1.*
 Pin-Priority: 1000" | sudo tee /etc/apt/preferences.d/ansible
 
-# Desc: Unpin ansible package
+#: Unpin ansible package
 sudo rm /etc/apt/preferences.d/ansible
 ```

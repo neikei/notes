@@ -7,14 +7,14 @@
 Build step:
 
 ```bash
-# Desc: Find empty directories and write them into a logging file
+#: Find empty directories and write them into a logging file
 find . -empty -type d > empty_directories.txt
 ```
 
 Deployment step:
 
 ```bash
-# Desc: Create empty directories based on the logging file
+#: Create empty directories based on the logging file
 cat empty_directories.txt | while read directory; do
     mkdir -p $directory
 done
@@ -25,13 +25,13 @@ done
 Build step:
 
 ```bash
-# Desc: Create tar.gz archive of all files and remove base files
+#: Create tar.gz archive of all files and remove base files
 tar czf artifact.tar.gz * --remove-files
 ```
 
 Deployment step:
 
 ```bash
-# Desc: Extract archive and remove it
+#: Extract archive and remove it
 tar xzfv artifact.tar.gz && rm artifact.tar.gz
 ```

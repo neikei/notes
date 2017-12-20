@@ -3,13 +3,13 @@
 [Screenfetch](https://github.com/KittyKatt/screenFetch) is a bash tool to display system information.
 
 ```bash
-# Desc: Install nfs-kernel-server
+#: Install nfs-kernel-server
 neikei@workstation:~$ sudo apt install screenfetch
 
-# Desc: Add the following line to the end of your ~/.bashrc or ~/.zshrc
+#: Add the following line to the end of your ~/.bashrc or ~/.zshrc
 if [ -f /usr/bin/screenfetch ]; then echo ""; screenfetch; echo ""; fi
 
-# Desc: Example output during shell start
+#: Example output during shell start
 
                           ./+o+-       neikei@workstation
                   yyyyy. 'yyyyyy+      OS: Ubuntu 16.04 xenial

@@ -86,13 +86,13 @@ fi
 [Screenfetch](https://github.com/KittyKatt/screenFetch) is a bash tool to display system information.
 
 ```bash
-# Desc: Install nfs-kernel-server
+#: Install nfs-kernel-server
 neikei@workstation:~$ sudo apt install screenfetch
 
-# Desc: Add the following line to the end of your ~/.bashrc or ~/.zshrc
+#: Add the following line to the end of your ~/.bashrc or ~/.zshrc
 if [ -f /usr/bin/screenfetch ]; then echo ""; screenfetch; echo ""; fi
 
-# Desc: Example output during shell start
+#: Example output during shell start
 
                           ./+o+-       neikei@workstation
                   yyyyy. 'yyyyyy+      OS: Ubuntu 16.04 xenial
@@ -121,7 +121,7 @@ if [ -f /usr/bin/screenfetch ]; then echo ""; screenfetch; echo ""; fi
 History of the attachment of a new disk to a CentOS 7.4 VM.
 
 ```bash
-# Desc: Compare the list of available devices and mounted devices to locate the new device
+#: Compare the list of available devices and mounted devices to locate the new device
 [root@localhost ~]# echo "Available devices:" && ls /dev/sd? | sort && echo "Available partitions:" && ls /dev/sd?? | sort
 Available devices:
 /dev/sda
@@ -131,9 +131,9 @@ Available partitions:
 /dev/sda1
 /dev/sda2
 /dev/sdb1
-# Desc: /dev/sdc is the new device, because it has no available partition yet
+#: /dev/sdc is the new device, because it has no available partition yet
 
-# Desc: Check available partitions
+#: Check available partitions
 [root@localhost ~]# fdisk /dev/sdc
 Command (m for help): p
 
@@ -146,7 +146,7 @@ Disk identifier: 0x7b407523
 
    Device Boot      Start         End      Blocks   Id  System
 
-# Desc: Create new partition
+#: Create new partition
 Command (m for help): n
 Partition type:
    p   primary (0 primary, 0 extended, 4 free)
@@ -160,14 +160,14 @@ Last sector, +sectors or +size{K,M,G} (2048-16777215, default 16777215):
 Using default value 16777215
 Partition 1 of type Linux and of size 8 GiB is set
 
-# Desc: Write the partition to the disk
+#: Write the partition to the disk
 Command (m for help): w
 The partition table has been altered!
 
 Calling ioctl() to re-read partition table.
 Syncing disks.
 
-# Desc: Re-check available partitions
+#: Re-check available partitions
 Command (m for help): p
 
 Disk /dev/sdc: 8589 MB, 8589934592 bytes, 16777216 sectors
@@ -180,7 +180,7 @@ Disk identifier: 0x7b407523
    Device Boot      Start         End      Blocks   Id  System
 /dev/sdc1            2048    16777215     8387584   83  Linux
 
-# Desc: Create a filesystem on the new created partition
+#: Create a filesystem on the new created partition
 [root@localhost ~]# mkfs -t ext4 /dev/sdc1
 mke2fs 1.42.9 (28-Dec-2013)
 Filesystem label=
@@ -203,10 +203,10 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 
-# Desc: Mount the new filesystem
+#: Mount the new filesystem
 [root@localhost ~]# mount /dev/sdc1 /mnt/
 
-# Desc: Add the new created partition to /etc/fstab file if it should be mounted during the boot process
+#: Add the new created partition to /etc/fstab file if it should be mounted during the boot process
 ```
 <div id='2017-11-22-System-CLI-monitoring'/>
 
@@ -215,28 +215,28 @@ Writing superblocks and filesystem accounting information: done
 CLI tools for monitoring the system.
 
 ```bash
-# Desc: Overview of CPU, RAM, load and processes
+#: Overview of CPU, RAM, load and processes
 top
 
-# Desc: Like top but with interactive fitlers and coloured
+#: Like top but with interactive fitlers and coloured
 htop
 
-# Desc: MySQL processes
+#: MySQL processes
 mytop
 
-# Desc: Disk usage in human-readable format
+#: Disk usage in human-readable format
 df -h
 
-# Desc: Read and write operations
+#: Read and write operations
 iotop
 
-# Desc: Network traffic
+#: Network traffic
 iftop
 
-# Desc: Network packets
+#: Network packets
 iptraf
 
-# Desc: Dump network traffic
+#: Dump network traffic
 tcpdump
 ```
 <div id='2017-11-21-System-versions'/>
@@ -246,15 +246,15 @@ tcpdump
 Snippets to check system versions on debian based systems.
 
 ```bash
-# Desc: Show kernel version
+#: Show kernel version
 neikei@workstation:~$ uname -r
 4.4.0-67-generic
 
-# Desc: Show debian version
+#: Show debian version
 neikei@workstation:~$ cat /etc/debian_version
 stretch/sid
 
-# Desc: Show os release
+#: Show os release
 neikei@workstation:~$ cat /etc/os-release
 NAME="Ubuntu"
 VERSION="16.04.3 LTS (Xenial Xerus)"
@@ -268,7 +268,7 @@ BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
 VERSION_CODENAME=xenial
 UBUNTU_CODENAME=xenial
 
-# Desc: Use lsb_release to check os version
+#: Use lsb_release to check os version
 neikei@workstation:~$ lsb_release -a
 No LSB modules are available.
 Distributor ID: Ubuntu
@@ -285,20 +285,20 @@ Just some basic snippets to search and replace in text files e.g. config files w
 **sed**
 
 ```bash
-# Desc: Search and replace in the whole file
+#: Search and replace in the whole file
 sed -i -e 's/search/replace/g' file.txt
 ```
 
 **vim**
 
 ```bash
-# Desc: Open your file with vim
+#: Open your file with vim
 vim file.txt
 
-# Desc: Search and replace only next match after the current cursor position
+#: Search and replace only next match after the current cursor position
 :s/search/replace/g
 
-# Desc: Search and replace in the whole file
+#: Search and replace in the whole file
 :%s/search/replace/g
 ```
 <div id='2017-10-28-Pin-ansible-apt-package'/>
@@ -310,26 +310,26 @@ The simplest solution is apt-mark, but the solution with apt preferences is more
 **apt-mark:** Prevent the package from being automatically installed, upgraded or removed.
 
 ```bash
-# Desc: Set ansible package to hold
+#: Set ansible package to hold
 sudo apt-mark hold ansible
 
-# Desc: Show packages on hold
+#: Show packages on hold
 sudo apt-mark showhold
    ansible
 
-# Desc: Set ansible package to unhold
+#: Set ansible package to unhold
 sudo apt-mark unhold ansible
 ```
 
 **apt preferences:** Pin the package to a specific version, but allow apt to update the package  with patches.
 
 ```bash
-# Desc: Pin ansible package
+#: Pin ansible package
 echo "Package: ansible
 Pin: version 2.1.*
 Pin-Priority: 1000" | sudo tee /etc/apt/preferences.d/ansible
 
-# Desc: Unpin ansible package
+#: Unpin ansible package
 sudo rm /etc/apt/preferences.d/ansible
 ```
 <div id='2017-10-28-Install-specific-apt-package-version'/>
@@ -339,14 +339,14 @@ sudo rm /etc/apt/preferences.d/ansible
 Example of the ansible package installation on Ubuntu.
 
 ```bash
-# Desc: Check available ansible packages
+#: Check available ansible packages
 sudo apt-cache madison ansible
    ansible | 2.4.1.0-1ppa~xenial | http://ppa.launchpad.net/ansible/ansible/ubuntu xenial/main amd64 Packages
    ansible | 2.4.1.0-1ppa~xenial | http://ppa.launchpad.net/ansible/ansible/ubuntu xenial/main i386 Packages
    ansible | 2.1.1.0-1~ubuntu16.04.1 | http://de.archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages
    ansible | 2.1.1.0-1~ubuntu16.04.1 | http://de.archive.ubuntu.com/ubuntu xenial-backports/universe i386 Packages
 
-# Desc: Install the required ansible package
+#: Install the required ansible package
 sudo apt install ansible=2.1.1.0-1~ubuntu16.04.1
 ```
 <div id='2017-10-20-SystemD-multi-spawn-processes'/>
@@ -361,18 +361,18 @@ This great [documentation on StackExchange](https://unix.stackexchange.com/quest
 The jpegoptim tool optimizes jpg images and compresses them without loss of quality.
 
 ```bash
-# Desc: Install jpegoptim
+#: Install jpegoptim
 sudo apt install jpegoptim
 
-# Desc: Optimize a single image. Caution: this will overwrite the original image.
+#: Optimize a single image. Caution: this will overwrite the original image.
 jpegoptim ./pictures/testimage.jpg
 ./Pictures/testimage.jpg 3120x4160 24bit N Exif  [OK] 841351 --> 729471 bytes (13.30%), optimized.
 
-# Desc: Optimize a single file and store it in a different directory to keep the original image.
+#: Optimize a single file and store it in a different directory to keep the original image.
 jpegoptim ./pictures/testimage.jpg --dest="/tmp/"
 ./Pictures/testimage.jpg 3120x4160 24bit N Exif  [OK] 841351 --> 729471 bytes (13.30%), optimized.
 
-# Desc: Optimize images of a find result
+#: Optimize images of a find result
 find . -type f -regextype posix-extended -regex "^.*\.(jpg|jpeg|JPG|JPEG)$" -exec jpegoptim {} \;
 ./Pictures/testimage1.jpg 3120x4160 24bit N Exif  [OK] 841351 --> 729471 bytes (13.30%), optimized.
 ./Pictures/testimage2.jpg 3120x4160 24bit N Exif  [OK] 841351 --> 729471 bytes (13.30%), optimized.
@@ -384,13 +384,13 @@ find . -type f -regextype posix-extended -regex "^.*\.(jpg|jpeg|JPG|JPEG)$" -exe
 Configure ntpdate to synchronize the time with the internet hourly. Especially recommended for VMs in a network without a self-hosted ntp server. 
 
 ```bash
-# Desc: Remove ntp if it is installed
+#: Remove ntp if it is installed
 sudo apt remove ntp
 
-# Desc: Install ntpdate
+#: Install ntpdate
 sudo apt install ntpdate
 
-# Desc: Configure cron to resync the time hourly
+#: Configure cron to resync the time hourly
 echo $'#!/bin/bash\n/usr/sbin/ntpdate -s pool.ntp.org' | sudo tee /etc/cron.hourly/ntpdate
 sudo chmod +x /etc/cron.hourly/ntpdate
 ```
@@ -401,10 +401,10 @@ sudo chmod +x /etc/cron.hourly/ntpdate
 The tilde as indicator for the home directory isn't interpreted right during a bash condition validation.
 
 ```bash
-# Desc: problematic condition
+#: problematic condition
 if [ -d "~/directory" ]; then echo "... is a directory."; fi
 
-# Desc: working condition
+#: working condition
 if [ -d "$HOME/directory" ]; then echo "... is a directory."; fi
 ```
 <div id='2017-08-21-Database-replication-status'/>
@@ -414,16 +414,16 @@ if [ -d "$HOME/directory" ]; then echo "... is a directory."; fi
 Bash snippets to check the database replication.
 
 ```bash
-# Desc: MySQL slave status
+#: MySQL slave status
 mysql -e "SHOW SLAVE STATUS \G"
 
-# Desc: MySQL slave status as watch to refresh every 2 seconds
+#: MySQL slave status as watch to refresh every 2 seconds
 watch -n 2 'mysql -e "SHOW SLAVE STATUS \G"'
 
-# Desc: MySQL replication lag only
+#: MySQL replication lag only
 mysql -e 'SHOW SLAVE STATUS \G' | grep Seconds_Behind_Master
 
-# Desc: PostgreSQL replication lag only
+#: PostgreSQL replication lag only
 cd /tmp && sudo -u postgres psql -d postgres -c "SELECT CASE WHEN pg_last_xlog_receive_location() = pg_last_xlog_replay_location()
     THEN 0
     ELSE EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp())
@@ -436,19 +436,19 @@ END AS replication_lag_in_seconds;"
 Bash snippets to validate the most common archives.
 
 ```bash
-# Desc: Validate .tar.gz archives
+#: Validate .tar.gz archives
 tar -tzf archive.tar.gz >/dev/null
 
-# Desc: Validate .tar archives
+#: Validate .tar archives
 tar -tf archive.tar >/dev/null
 
-# Desc: Validate .gz archives
+#: Validate .gz archives
 gzip -t archive.gz
 
-# Desc: Validate .bz2 archives
+#: Validate .bz2 archives
 bzip2 -t archive.bz2
 
-# Desc: Validate .zip archives
+#: Validate .zip archives
 zip -T archive.zip
 ```
 <div id='2017-08-12-Install-Oracle-Java-8-on-Debian-Stretch'/>
@@ -456,18 +456,18 @@ zip -T archive.zip
 ### 2017-08-12: Install Oracle Java 8 on Debian Stretch
 
 ```bash
-# Desc: Install the network service dirmngr to manage certificate servers
+#: Install the network service dirmngr to manage certificate servers
 apt install dirmngr
 
-# Desc: Add the repository and the repository key
+#: Add the repository and the repository key
 echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" > /etc/apt/sources.list.d/webupd8team-java.list
 echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" >> /etc/apt/sources.list.d/webupd8team-java.list
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 
-# Desc: Update package informations
+#: Update package informations
 apt update
 
-# Desc: Install Java
+#: Install Java
 apt install oracle-java8-installer
 ```
 <div id='2017-07-16-Command-line-convenience'/>
@@ -659,7 +659,7 @@ fi
 Installation of syntaxchecks for web applications on a Linux Jenkins server.
 
 ```bash
-# Desc: Install syntaxchecks in the home path of the jenkins application user
+#: Install syntaxchecks in the home path of the jenkins application user
 su - jenkins
 cd ~
 git clone https://github.com/neikei/syntaxchecks.git
@@ -668,7 +668,7 @@ git clone https://github.com/neikei/syntaxchecks.git
 Jenkins task to execute the sytaxchecks during the build process.
 
 ```bash
-# Desc: Execute syntaxchecks to validate all changed files in the last commit and stop in case of an error
+#: Execute syntaxchecks to validate all changed files in the last commit and stop in case of an error
 ~/syntaxchecks/syntaxchecks.sh -p "`pwd`" -c 1 -s
 ```
 <div id='2017-09-19-Bamboo-centralized-syntaxchecks'/>
@@ -678,7 +678,7 @@ Jenkins task to execute the sytaxchecks during the build process.
 Installation of syntaxchecks for web applications on a Linux Bamboo server.
 
 ```bash
-# Desc: Install syntaxchecks in the home path of the bamboo application user
+#: Install syntaxchecks in the home path of the bamboo application user
 su - bamboo
 cd ~
 git clone https://github.com/neikei/syntaxchecks.git
@@ -687,7 +687,7 @@ git clone https://github.com/neikei/syntaxchecks.git
 Bamboo task to execute the sytaxchecks during the build process.
 
 ```bash
-# Desc: Execute syntaxchecks to validate all changed files in the last commit and stop in case of an error
+#: Execute syntaxchecks to validate all changed files in the last commit and stop in case of an error
 ~/syntaxchecks/syntaxchecks.sh -p "${bamboo.build.working.directory}" -c 1 -s
 ```
 <div id='2017-09-18-Deploy-archives-with-Bamboo-and-PHP-Deployer'/>
@@ -697,7 +697,7 @@ Bamboo task to execute the sytaxchecks during the build process.
 Bamboo task to create the archive during the deployment process.
 
 ```bash
-# Desc: Create tarball and remove archived files
+#: Create tarball and remove archived files
 tar cfz artifact.tar.gz * --remove-files
 ```
 
@@ -745,18 +745,18 @@ Hint: "composer update" is needed in every project directory.
 **Bamboo task** to execute PHP Deployer scripts during the deployment process.
 
 ```bash
-# Desc: Config
+#: Config
 project=<projectname>
 stage=<stage>
 
-# Desc: Deployment
+#: Deployment
 logfile="/tmp/$project-$stage.log"
 
-# Desc: Change into the directroy of your deployer scripts and start the deployment with the build directory as parameter
+#: Change into the directroy of your deployer scripts and start the deployment with the build directory as parameter
 cd ~/deployer/$project
 php vendor/bin/dep deploy $stage --artifact_directory="${bamboo.build.working.directory}" -vv 2>&1 | tee $logfile
 
-# Desc: Check Result
+#: Check Result
 errors=`grep "\[FatalException\]\|RuntimeException\|\[Error\]\|Fatal error\|Exception trace\|General error" $logfile | wc -l`
 if [ $errors -ne 0 ]; then
     echo "==> Deployer failed... Check the output above.";
@@ -796,13 +796,13 @@ proxy_set_header   Authorization "";
 Bash snippets for HipChat notifications.
 
 ```bash
-# Desc: HipChat API v2
+#: HipChat API v2
 curl -X POST \
      -H "Content-Type: application/json" \
      --data "{ \"color\":\"green\", \"message\":\"HipCHat API v2\", \"message_format\":\"text\" }" \
      https://api.hipchat.com/v2/room/<room_api_id>/notification?auth_token=<auth_token>
 
-# Desc: HipChat API v1
+#: HipChat API v1
 curl --data "from=Sender&room_id=<room_api_id>&message=%28successful%29+HipChat+API+v1+&message_format=text&color=green" "https://api.hipchat.com/v1/rooms/message?format=json&auth_token=<auth_token>"
 ```
 
@@ -820,14 +820,14 @@ Further links:
 Build step:
 
 ```bash
-# Desc: Find empty directories and write them into a logging file
+#: Find empty directories and write them into a logging file
 find . -empty -type d > empty_directories.txt
 ```
 
 Deployment step:
 
 ```bash
-# Desc: Create empty directories based on the logging file
+#: Create empty directories based on the logging file
 cat empty_directories.txt | while read directory; do
     mkdir -p $directory
 done
@@ -838,14 +838,14 @@ done
 Build step:
 
 ```bash
-# Desc: Create tar.gz archive of all files and remove base files
+#: Create tar.gz archive of all files and remove base files
 tar czf artifact.tar.gz * --remove-files
 ```
 
 Deployment step:
 
 ```bash
-# Desc: Extract archive and remove it
+#: Extract archive and remove it
 tar xzfv artifact.tar.gz && rm artifact.tar.gz
 ```
 <div id='2017-07-20-Syntaxchecks'/>
@@ -861,13 +861,13 @@ Bash snippets to check the syntax of other files.
 Syntaxchecks for PHP files.
 
 ```bash
-# Desc: Syntaxcheck for one file
+#: Syntaxcheck for one file
 php -l <file_name>
 
-# Desc: Syntaxcheck for all files in the current directory
+#: Syntaxcheck for all files in the current directory
 find . -name "*.php" -exec php -l {} \;
 
-# Desc: Syntaxcheck for all files in the last Git commit
+#: Syntaxcheck for all files in the last Git commit
 git diff --name-only --diff-filter=ACMR HEAD~1..HEAD | grep -E "^.*.php$" | xargs -i php -l {}
 ```
 
@@ -878,10 +878,10 @@ git diff --name-only --diff-filter=ACMR HEAD~1..HEAD | grep -E "^.*.php$" | xarg
 Syntaxchecks for YAML files.
 
 ```bash
-# Desc: Syntaxcheck for one file
+#: Syntaxcheck for one file
 ruby -e "require 'yaml';puts YAML.load_file('<file_name>')"
 
-# Desc: Syntaxcheck for all files in the current directory
+#: Syntaxcheck for all files in the current directory
 for file in `find . -name "*.yaml"`
 do
   ruby -e "require 'yaml';puts YAML.load_file(\"$file\")" > /dev/null 2>&1
@@ -892,7 +892,7 @@ do
   fi
 done
 
-# Desc: Syntaxcheck for all files in the last Git commit
+#: Syntaxcheck for all files in the last Git commit
 for file in `git diff --name-only --diff-filter=ACMR HEAD~1..HEAD | grep -E "^.*.yaml$"`
 do
   ruby -e "require 'yaml';puts YAML.load_file(\"$file\")" > /dev/null 2>&1
@@ -965,13 +965,13 @@ Debian 8 or Debian 9
 NFS is the fastest Vagrant Share and the following snippet will explain how to use it on Ubuntu.
 
 ```bash
-# Desc: Install nfs-kernel-server
+#: Install nfs-kernel-server
 neikei@workstation:~$ sudo apt install nfs-kernel-server
 
-# Desc: Add the following line to the Vagrantfile
+#: Add the following line to the Vagrantfile
 config.vm.synced_folder ".", "/vagrant", id: "v-root", mount_options: ["rw", "tcp", "nolock", "noacl", "async"], type: "nfs", nfs_udp: false
 
-# Desc: Vagrant up
+#: Vagrant up
 neikei@workstation:~$ vagrant up
 ...
 ==> default: Exporting NFS shared folders...
@@ -997,7 +997,7 @@ Dez 01 08:04:48 workstation systemd[1]: Started NFS server and services.
 The Vagrantboxes from the [bento project](https://github.com/chef/bento) are really good, but the PHP-FPM service didn't start properly during a vagrant up. So I did some research and found a cleanup script (/etc/init.d/mountall-bootclean.sh) which is executed during every startup and removes temporary directories like /var/run where the PHP-FPM socket was placed. Move the socket to a static directory or use the following provisioning command in your Vagrantfile to ensure the PHP-FPM is running after a vagrant up.
 
 ```bash
-# Desc: Ensure PHP-FPM and Nginx restart after vagrant up
+#: Ensure PHP-FPM and Nginx restart after vagrant up
 config.vm.provision "shell", inline: "service php7.1-fpm restart && service nginx restart", run: "always"
 ```
 <div id='2017-07-31-Vagrant-Basics'/>
@@ -1007,31 +1007,31 @@ config.vm.provision "shell", inline: "service php7.1-fpm restart && service ngin
 Basic commands for Vagrant.
 
 ```bash
-# Desc: Show Vagrant Version
+#: Show Vagrant Version
 vagrant --version
 
-# Desc: Show installed plugins and versions
+#: Show installed plugins and versions
 vagrant plugin list
 
-# Desc: Create Vagrantfile based on a box from https://app.vagrantup.com/
+#: Create Vagrantfile based on a box from https://app.vagrantup.com/
 vagrant init debian/stretch64
 
-# Desc: Start the virtual machine based on the Vagrantfile
+#: Start the virtual machine based on the Vagrantfile
 vagrant up
 
-# Desc: Show the status of the virtual machine
+#: Show the status of the virtual machine
 vagrant status
 
-# Desc: Connect to the virtual machine
+#: Connect to the virtual machine
 vagrant ssh
 
-# Desc: Stop the virtual machine
+#: Stop the virtual machine
 vagrant halt
 
-# Desc: Destroy the virtual machine
+#: Destroy the virtual machine
 vagrant destroy
 
-# Desc: Validate the Vagrantfile
+#: Validate the Vagrantfile
 vagrant validate
 ```
 
@@ -1050,16 +1050,16 @@ Further links:
 Git snippets to revert commits.
 
 ```bash
-# Desc: Revert the last commit
+#: Revert the last commit
 git revert HEAD
 
-# Desc: Revert a specific commit by commit id
+#: Revert a specific commit by commit id
 git revert <commit_id>
 
-# Desc: Revert the last merge
+#: Revert the last merge
 git revert -m1 HEAD
 
-# Desc: Revert a specific merge by commit id
+#: Revert a specific merge by commit id
 git revert -m1 <commit_id>
 ```
 <div id='2017-07-17-Git-user-switcher'/>

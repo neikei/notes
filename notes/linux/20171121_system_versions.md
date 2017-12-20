@@ -3,15 +3,15 @@
 Snippets to check system versions on debian based systems.
 
 ```bash
-# Desc: Show kernel version
+#: Show kernel version
 neikei@workstation:~$ uname -r
 4.4.0-67-generic
 
-# Desc: Show debian version
+#: Show debian version
 neikei@workstation:~$ cat /etc/debian_version
 stretch/sid
 
-# Desc: Show os release
+#: Show os release
 neikei@workstation:~$ cat /etc/os-release
 NAME="Ubuntu"
 VERSION="16.04.3 LTS (Xenial Xerus)"
@@ -25,7 +25,7 @@ BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
 VERSION_CODENAME=xenial
 UBUNTU_CODENAME=xenial
 
-# Desc: Use lsb_release to check os version
+#: Use lsb_release to check os version
 neikei@workstation:~$ lsb_release -a
 No LSB modules are available.
 Distributor ID: Ubuntu

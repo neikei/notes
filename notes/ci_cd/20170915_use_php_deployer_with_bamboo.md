@@ -17,18 +17,18 @@ Hint: "composer update" is needed in every project directory.
 **Bamboo task** to execute PHP Deployer scripts during the deployment process.
 
 ```bash
-# Desc: Config
+#: Config
 project=<projectname>
 stage=<stage>
 
-# Desc: Deployment
+#: Deployment
 logfile="/tmp/$project-$stage.log"
 
-# Desc: Change into the directroy of your deployer scripts and start the deployment with the build directory as parameter
+#: Change into the directroy of your deployer scripts and start the deployment with the build directory as parameter
 cd ~/deployer/$project
 php vendor/bin/dep deploy $stage --artifact_directory="${bamboo.build.working.directory}" -vv 2>&1 | tee $logfile
 
-# Desc: Check Result
+#: Check Result
 errors=`grep "\[FatalException\]\|RuntimeException\|\[Error\]\|Fatal error\|Exception trace\|General error" $logfile | wc -l`
 if [ $errors -ne 0 ]; then
     echo "==> Deployer failed... Check the output above.";

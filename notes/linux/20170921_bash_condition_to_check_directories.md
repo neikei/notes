@@ -3,9 +3,9 @@
 The tilde as indicator for the home directory isn't interpreted right during a bash condition validation.
 
 ```bash
-# Desc: problematic condition
+#: problematic condition
 if [ -d "~/directory" ]; then echo "... is a directory."; fi
 
-# Desc: working condition
+#: working condition
 if [ -d "$HOME/directory" ]; then echo "... is a directory."; fi
 ```

@@ -3,13 +3,13 @@
 NFS is the fastest Vagrant Share and the following snippet will explain how to use it on Ubuntu.
 
 ```bash
-# Desc: Install nfs-kernel-server
+#: Install nfs-kernel-server
 neikei@workstation:~$ sudo apt install nfs-kernel-server
 
-# Desc: Add the following line to the Vagrantfile
+#: Add the following line to the Vagrantfile
 config.vm.synced_folder ".", "/vagrant", id: "v-root", mount_options: ["rw", "tcp", "nolock", "noacl", "async"], type: "nfs", nfs_udp: false
 
-# Desc: Vagrant up
+#: Vagrant up
 neikei@workstation:~$ vagrant up
 ...
 ==> default: Exporting NFS shared folders...

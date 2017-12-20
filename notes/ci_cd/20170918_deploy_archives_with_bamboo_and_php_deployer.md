@@ -3,7 +3,7 @@
 Bamboo task to create the archive during the deployment process.
 
 ```bash
-# Desc: Create tarball and remove archived files
+#: Create tarball and remove archived files
 tar cfz artifact.tar.gz * --remove-files
 ```
 

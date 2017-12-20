@@ -3,27 +3,27 @@
 CLI tools for monitoring the system.
 
 ```bash
-# Desc: Overview of CPU, RAM, load and processes
+#: Overview of CPU, RAM, load and processes
 top
 
-# Desc: Like top but with interactive fitlers and coloured
+#: Like top but with interactive fitlers and coloured
 htop
 
-# Desc: MySQL processes
+#: MySQL processes
 mytop
 
-# Desc: Disk usage in human-readable format
+#: Disk usage in human-readable format
 df -h
 
-# Desc: Read and write operations
+#: Read and write operations
 iotop
 
-# Desc: Network traffic
+#: Network traffic
 iftop
 
-# Desc: Network packets
+#: Network packets
 iptraf
 
-# Desc: Dump network traffic
+#: Dump network traffic
 tcpdump
 ```

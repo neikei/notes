@@ -3,31 +3,31 @@
 Basic commands for Vagrant.
 
 ```bash
-# Desc: Show Vagrant Version
+#: Show Vagrant Version
 vagrant --version
 
-# Desc: Show installed plugins and versions
+#: Show installed plugins and versions
 vagrant plugin list
 
-# Desc: Create Vagrantfile based on a box from https://app.vagrantup.com/
+#: Create Vagrantfile based on a box from https://app.vagrantup.com/
 vagrant init debian/stretch64
 
-# Desc: Start the virtual machine based on the Vagrantfile
+#: Start the virtual machine based on the Vagrantfile
 vagrant up
 
-# Desc: Show the status of the virtual machine
+#: Show the status of the virtual machine
 vagrant status
 
-# Desc: Connect to the virtual machine
+#: Connect to the virtual machine
 vagrant ssh
 
-# Desc: Stop the virtual machine
+#: Stop the virtual machine
 vagrant halt
 
-# Desc: Destroy the virtual machine
+#: Destroy the virtual machine
 vagrant destroy
 
-# Desc: Validate the Vagrantfile
+#: Validate the Vagrantfile
 vagrant validate
 ```
 
