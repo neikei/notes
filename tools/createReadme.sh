@@ -7,7 +7,34 @@ echo "Please check the [Github repository](https://github.com/neikei/notes) if a
 
 # Notes
 echo "# Notes" >> README.tmp
-for file in `find notes/ -name "*.md" | sort -r`
+
+echo "## Linux" >> README.tmp
+for file in `find notes/linux/ -name "*.md" | sort -r`
+do 
+  cat $file >> README.tmp
+done
+echo "## Windows" >> README.tmp
+for file in `find notes/windows/ -name "*.md" | sort -r`
+do 
+  cat $file >> README.tmp
+done
+echo "## Continuous Integration & Continuous Delivery" >> README.tmp
+for file in `find notes/ci_cd/ -name "*.md" | sort -r`
+do 
+  cat $file >> README.tmp
+done
+echo "## Ansible" >> README.tmp
+for file in `find notes/ansible/ -name "*.md" | sort -r`
+do 
+  cat $file >> README.tmp
+done
+echo "## Vagrant" >> README.tmp
+for file in `find notes/vagrant/ -name "*.md" | sort -r`
+do 
+  cat $file >> README.tmp
+done
+echo "## Git" >> README.tmp
+for file in `find notes/git/ -name "*.md" | sort -r`
 do 
   cat $file >> README.tmp
 done
