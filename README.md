@@ -27,6 +27,7 @@
   - [Windows](#Windows)
     - [2017-12-15: Windows 10 Ubuntu Bash installation](#2017-12-15-Windows-10-Ubuntu-Bash-installation)
   - [Continuous Integration & Continuous Delivery](#Continuous-Integration-&-Continuous-Delivery)
+    - [2017-12-21: Bamboo JUnit Parser fake results for hotfixes](#2017-12-21-Bamboo-JUnit-Parser-fake-results-for-hotfixes)
     - [2017-11-23: Common HTTP status codes](#2017-11-23-Common-HTTP-status-codes)
     - [2017-10-26: Bamboo branch based configs](#2017-10-26-Bamboo-branch-based-configs)
     - [2017-09-26: Jenkins centralized syntaxchecks](#2017-09-26-Jenkins-centralized-syntaxchecks)
@@ -612,6 +613,30 @@ UBUNTU_CODENAME=xenial
 <div id='Continuous-Integration-&-Continuous-Delivery'/>
 
 ## Continuous Integration & Continuous Delivery
+<div id='2017-12-21-Bamboo-JUnit-Parser-fake-results-for-hotfixes'/>
+
+### 2017-12-21: Bamboo JUnit Parser fake results for hotfixes
+
+Bamboo task to create fake testresults for the JUnit Parser if a hotfix build is running without the execution of tests.
+
+```bash
+#!/bin/bash
+
+#: Pre-Check
+is_hotfix=`git rev-parse --abbrev-ref HEAD | grep "hotfix" | wc -l`
+
+#: Run Coveragechecks
+if [ $is_hotfix -eq 1 ]; then
+
+echo '<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Hotfix Fake Test Suite" tests="1" assertions="0" failures="0" errors="0" time="0.01">
+      <testcase name="Hotfix Fake Test"/>
+  </testsuite>
+</testsuites>' > phpunit_hotfix_fake_results.xml
+
+fi
+```
 <div id='2017-11-23-Common-HTTP-status-codes'/>
 
 ### 2017-11-23: Common HTTP status codes
