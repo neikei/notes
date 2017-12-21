@@ -1,4 +1,6 @@
-### 2017-08-11: Ansible snippet to identify Vagrantboxes
+### 2017-08-11: Identify Vagrantboxes
+
+Ansible snippet to identify Vagrantboxes.
 
 ```yaml
 - name: Check if Server is a Vagrantbox

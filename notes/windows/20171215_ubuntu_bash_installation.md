@@ -1,6 +1,6 @@
-### 2017-12-15: Windows 10 Ubuntu Bash installation
+### 2017-12-15: Ubuntu Bash installation on Windows 10
 
-1. Enable "Windows Subsystem for Linux" in the "Windows Features" area
+1. Enable "Windows Subsystem for Linux" in the "Windows Features" settings
 2. Restart Windows
 3. Install "Ubuntu" from the "Microsoft Store"
 4. Start Ubuntu

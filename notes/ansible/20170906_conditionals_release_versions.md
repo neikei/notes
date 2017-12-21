@@ -1,4 +1,4 @@
-### 2017-09-06: Ansible conditionals for release versions
+### 2017-09-06: Conditionals for release versions
 
 Ansible tasks examples:
 

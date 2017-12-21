@@ -1,4 +1,4 @@
-### 2017-12-01: Vagrant NFS share on Ubuntu
+### 2017-12-01: NFS share on Ubuntu
 
 NFS is the fastest Vagrant Share and the following snippet will explain how to use it on Ubuntu.
 

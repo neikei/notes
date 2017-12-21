@@ -14,7 +14,7 @@
     - [2017-10-20: SystemD multi spawn processes](#2017-10-20-SystemD-multi-spawn-processes)
     - [2017-10-15: Ubuntu optimize jpeg images](#2017-10-15-Ubuntu-optimize-jpeg-images)
     - [2017-10-04: Debian ntpdate time synchronization](#2017-10-04-Debian-ntpdate-time-synchronization)
-    - [2017-09-21: Bash condition to check directories](#2017-09-21-Bash-condition-to-check-directories)
+    - [2017-09-21: Bash condition to check if file is directory](#2017-09-21-Bash-condition-to-check-if-file-is-directory)
     - [2017-08-21: Database replication status](#2017-08-21-Database-replication-status)
     - [2017-08-14: Validate archives](#2017-08-14-Validate-archives)
     - [2017-08-12: Install Oracle Java 8 on Debian Stretch](#2017-08-12-Install-Oracle-Java-8-on-Debian-Stretch)
@@ -25,7 +25,7 @@
     - [2017-07-15: Fix locale warnings on Linux servers](#2017-07-15-Fix-locale-warnings-on-Linux-servers)
     - [2017-07-15: summarizeMD](#2017-07-15-summarizeMD)
   - [Windows](#Windows)
-    - [2017-12-15: Windows 10 Ubuntu Bash installation](#2017-12-15-Windows-10-Ubuntu-Bash-installation)
+    - [2017-12-15: Ubuntu Bash installation on Windows 10](#2017-12-15-Ubuntu-Bash-installation-on-Windows-10)
   - [Continuous Integration & Continuous Delivery](#Continuous-Integration-&-Continuous-Delivery)
     - [2017-12-21: Bamboo JUnit Parser fake results for hotfixes](#2017-12-21-Bamboo-JUnit-Parser-fake-results-for-hotfixes)
     - [2017-11-23: Common HTTP status codes](#2017-11-23-Common-HTTP-status-codes)
@@ -41,12 +41,12 @@
       - [PHP](#PHP)
       - [YAML](#YAML)
   - [Ansible](#Ansible)
-    - [2017-09-06: Ansible conditionals for release versions](#2017-09-06-Ansible-conditionals-for-release-versions)
-    - [2017-08-11: Ansible snippet to identify Vagrantboxes](#2017-08-11-Ansible-snippet-to-identify-Vagrantboxes)
+    - [2017-09-06: Conditionals for release versions](#2017-09-06-Conditionals-for-release-versions)
+    - [2017-08-11: Identify Vagrantboxes](#2017-08-11-Identify-Vagrantboxes)
   - [Vagrant](#Vagrant)
-    - [2017-12-01: Vagrant NFS share on Ubuntu](#2017-12-01-Vagrant-NFS-share-on-Ubuntu)
+    - [2017-12-01: NFS share on Ubuntu](#2017-12-01-NFS-share-on-Ubuntu)
     - [2017-08-08: PHP-FPM not running after vagrant up (Vagrantbox by bento)](#2017-08-08-PHP-FPM-not-running-after-vagrant-up-Vagrantbox-by-bento)
-    - [2017-07-31: Vagrant Basics](#2017-07-31-Vagrant-Basics)
+    - [2017-07-31: Basic command list](#2017-07-31-Basic-command-list)
   - [Git](#Git)
     - [2017-08-10: Revert git commits](#2017-08-10-Revert-git-commits)
     - [2017-07-17: Git user switcher](#2017-07-17-Git-user-switcher)
@@ -395,9 +395,9 @@ sudo apt install ntpdate
 echo $'#!/bin/bash\n/usr/sbin/ntpdate -s pool.ntp.org' | sudo tee /etc/cron.hourly/ntpdate
 sudo chmod +x /etc/cron.hourly/ntpdate
 ```
-<div id='2017-09-21-Bash-condition-to-check-directories'/>
+<div id='2017-09-21-Bash-condition-to-check-if-file-is-directory'/>
 
-### 2017-09-21: Bash condition to check directories
+### 2017-09-21: Bash condition to check if file is directory
 
 The tilde as indicator for the home directory isn't interpreted right during a bash condition validation.
 
@@ -575,11 +575,11 @@ summarizeMD is a ruby script to create a table of contents for Markdown files. T
 <div id='Windows'/>
 
 ## Windows
-<div id='2017-12-15-Windows-10-Ubuntu-Bash-installation'/>
+<div id='2017-12-15-Ubuntu-Bash-installation-on-Windows-10'/>
 
-### 2017-12-15: Windows 10 Ubuntu Bash installation
+### 2017-12-15: Ubuntu Bash installation on Windows 10
 
-1. Enable "Windows Subsystem for Linux" in the "Windows Features" area
+1. Enable "Windows Subsystem for Linux" in the "Windows Features" settings
 2. Restart Windows
 3. Install "Ubuntu" from the "Microsoft Store"
 4. Start Ubuntu
@@ -931,9 +931,9 @@ done
 <div id='Ansible'/>
 
 ## Ansible
-<div id='2017-09-06-Ansible-conditionals-for-release-versions'/>
+<div id='2017-09-06-Conditionals-for-release-versions'/>
 
-### 2017-09-06: Ansible conditionals for release versions
+### 2017-09-06: Conditionals for release versions
 
 Ansible tasks examples:
 
@@ -961,9 +961,11 @@ Debian 8
 Debian 8 or Debian 9
 {% endif %}
 ```
-<div id='2017-08-11-Ansible-snippet-to-identify-Vagrantboxes'/>
+<div id='2017-08-11-Identify-Vagrantboxes'/>
 
-### 2017-08-11: Ansible snippet to identify Vagrantboxes
+### 2017-08-11: Identify Vagrantboxes
+
+Ansible snippet to identify Vagrantboxes.
 
 ```yaml
 - name: Check if Server is a Vagrantbox
@@ -983,9 +985,9 @@ Debian 8 or Debian 9
 <div id='Vagrant'/>
 
 ## Vagrant
-<div id='2017-12-01-Vagrant-NFS-share-on-Ubuntu'/>
+<div id='2017-12-01-NFS-share-on-Ubuntu'/>
 
-### 2017-12-01: Vagrant NFS share on Ubuntu
+### 2017-12-01: NFS share on Ubuntu
 
 NFS is the fastest Vagrant Share and the following snippet will explain how to use it on Ubuntu.
 
@@ -1025,9 +1027,9 @@ The Vagrantboxes from the [bento project](https://github.com/chef/bento) are rea
 #: Ensure PHP-FPM and Nginx restart after vagrant up
 config.vm.provision "shell", inline: "service php7.1-fpm restart && service nginx restart", run: "always"
 ```
-<div id='2017-07-31-Vagrant-Basics'/>
+<div id='2017-07-31-Basic-command-list'/>
 
-### 2017-07-31: Vagrant Basics
+### 2017-07-31: Basic command list
 
 Basic commands for Vagrant.
 

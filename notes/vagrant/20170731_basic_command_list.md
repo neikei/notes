@@ -1,4 +1,4 @@
-### 2017-07-31: Vagrant Basics
+### 2017-07-31: Basic command list
 
 Basic commands for Vagrant.
 
