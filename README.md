@@ -42,6 +42,7 @@
       - [PHP](#PHP)
       - [YAML](#YAML)
   - [Ansible](#Ansible)
+    - [2018-01-02: Load variables based on distribution information](#2018-01-02-Load-variables-based-on-distribution-information)
     - [2017-09-06: Conditionals for release versions](#2017-09-06-Conditionals-for-release-versions)
     - [2017-08-11: Identify Vagrantboxes](#2017-08-11-Identify-Vagrantboxes)
   - [Vagrant](#Vagrant)
@@ -949,6 +950,21 @@ done
 <div id='Ansible'/>
 
 ## Ansible
+<div id='2018-01-02-Load-variables-based-on-distribution-information'/>
+
+### 2018-01-02: Load variables based on distribution information
+
+The Ansible Snippet will search in the vars/ folder of a role and loads the variables of the first found file.
+
+```yaml
+- name: Load variables based on distributon information
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+    - "default.yml"
+```
 <div id='2017-09-06-Conditionals-for-release-versions'/>
 
 ### 2017-09-06: Conditionals for release versions
