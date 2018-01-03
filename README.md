@@ -25,6 +25,7 @@
     - [2017-07-15: Fix locale warnings on Linux servers](#2017-07-15-Fix-locale-warnings-on-Linux-servers)
     - [2017-07-15: summarizeMD](#2017-07-15-summarizeMD)
   - [Windows](#Windows)
+    - [2018-01-03: ASUS Zenbook UX310UA FanControl](#2018-01-03-ASUS-Zenbook-UX310UA-FanControl)
     - [2017-12-26: Linux system administrator tools](#2017-12-26-Linux-system-administrator-tools)
     - [2017-12-15: Ubuntu Bash installation on Windows 10](#2017-12-15-Ubuntu-Bash-installation-on-Windows-10)
   - [Continuous Integration & Continuous Delivery](#Continuous-Integration-&-Continuous-Delivery)
@@ -577,6 +578,15 @@ summarizeMD is a ruby script to create a table of contents for Markdown files. T
 <div id='Windows'/>
 
 ## Windows
+<div id='2018-01-03-ASUS-Zenbook-UX310UA-FanControl'/>
+
+### 2018-01-03: ASUS Zenbook UX310UA FanControl
+
+- Download and install the newest version of [NoteBook FanControl](https://github.com/hirschmann/nbfc/releases)
+- Start NoteBook FanControl
+- Select the required config
+- Set the Fan control service status to enabled
+- Enable autostart in the settings
 <div id='2017-12-26-Linux-system-administrator-tools'/>
 
 ### 2017-12-26: Linux system administrator tools
