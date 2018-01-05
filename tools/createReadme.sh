@@ -23,6 +23,11 @@ for file in `find notes/ci_cd/ -name "*.md" | sort -r`
 do 
   cat $file >> README.tmp
 done
+echo "## Bash" >> README.tmp
+for file in `find notes/bash/ -name "*.md" | sort -r`
+do 
+  cat $file >> README.tmp
+done
 echo "## Ansible" >> README.tmp
 for file in `find notes/ansible/ -name "*.md" | sort -r`
 do 

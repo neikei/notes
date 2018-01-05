@@ -3,7 +3,6 @@
 - [Hint](#Hint)
 - [Notes](#Notes)
   - [Linux](#Linux)
-    - [2017-12-13: Simple disk usage monitoring](#2017-12-13-Simple-disk-usage-monitoring)
     - [2017-12-06: Screenfetch](#2017-12-06-Screenfetch)
     - [2017-11-27: Locate, partition and create filesystem on new disk](#2017-11-27-Locate,-partition-and-create-filesystem-on-new-disk)
     - [2017-11-22: System CLI monitoring](#2017-11-22-System-CLI-monitoring)
@@ -14,7 +13,6 @@
     - [2017-10-20: SystemD multi spawn processes](#2017-10-20-SystemD-multi-spawn-processes)
     - [2017-10-15: Ubuntu optimize jpeg images](#2017-10-15-Ubuntu-optimize-jpeg-images)
     - [2017-10-04: Debian ntpdate time synchronization](#2017-10-04-Debian-ntpdate-time-synchronization)
-    - [2017-09-21: Bash condition to check if file is directory](#2017-09-21-Bash-condition-to-check-if-file-is-directory)
     - [2017-08-21: Database replication status](#2017-08-21-Database-replication-status)
     - [2017-08-14: Validate archives](#2017-08-14-Validate-archives)
     - [2017-08-12: Install Oracle Java 8 on Debian Stretch](#2017-08-12-Install-Oracle-Java-8-on-Debian-Stretch)
@@ -41,6 +39,9 @@
     - [2017-07-20: Syntaxchecks](#2017-07-20-Syntaxchecks)
       - [PHP](#PHP)
       - [YAML](#YAML)
+  - [Bash](#Bash)
+    - [2017-12-13: Simple disk usage monitoring](#2017-12-13-Simple-disk-usage-monitoring)
+    - [2017-09-21: Bash condition to check if file is directory](#2017-09-21-Bash-condition-to-check-if-file-is-directory)
   - [Ansible](#Ansible)
     - [2018-01-02: Load variables based on distribution information](#2018-01-02-Load-variables-based-on-distribution-information)
     - [2017-09-06: Conditionals for release versions](#2017-09-06-Conditionals-for-release-versions)
@@ -66,22 +67,6 @@ Please check the [Github repository](https://github.com/neikei/notes) if a code 
 <div id='Linux'/>
 
 ## Linux
-<div id='2017-12-13-Simple-disk-usage-monitoring'/>
-
-### 2017-12-13: Simple disk usage monitoring
-
-Bash snippet to monitor disk usage on non-production systems.
-
-```bash
-#!/bin/bash
-USED=`df /dev/sda1 | awk '{print $5}' | sed -ne 2p | cut -d"%" -f1`
-if [ "$USED" -gt 90 ]; then
-    echo "NOT OK: disk usage is above $USED percent."
-    # Add some alerting via mail or chat here
-else
-    echo "OK: $USED disk space used."
-fi
-```
 <div id='2017-12-06-Screenfetch'/>
 
 ### 2017-12-06: Screenfetch
@@ -396,19 +381,6 @@ sudo apt install ntpdate
 #: Configure cron to resync the time hourly
 echo $'#!/bin/bash\n/usr/sbin/ntpdate -s pool.ntp.org' | sudo tee /etc/cron.hourly/ntpdate
 sudo chmod +x /etc/cron.hourly/ntpdate
-```
-<div id='2017-09-21-Bash-condition-to-check-if-file-is-directory'/>
-
-### 2017-09-21: Bash condition to check if file is directory
-
-The tilde as indicator for the home directory isn't interpreted right during a bash condition validation.
-
-```bash
-#: problematic condition
-if [ -d "~/directory" ]; then echo "... is a directory."; fi
-
-#: working condition
-if [ -d "$HOME/directory" ]; then echo "... is a directory."; fi
 ```
 <div id='2017-08-21-Database-replication-status'/>
 
@@ -946,6 +918,38 @@ do
     echo "Some syntax errors detected in $file"
   fi
 done
+```
+<div id='Bash'/>
+
+## Bash
+<div id='2017-12-13-Simple-disk-usage-monitoring'/>
+
+### 2017-12-13: Simple disk usage monitoring
+
+Bash snippet to monitor disk usage on non-production systems.
+
+```bash
+#!/bin/bash
+USED=`df /dev/sda1 | awk '{print $5}' | sed -ne 2p | cut -d"%" -f1`
+if [ "$USED" -gt 90 ]; then
+    echo "NOT OK: disk usage is above $USED percent."
+    # Add some alerting via mail or chat here
+else
+    echo "OK: $USED disk space used."
+fi
+```
+<div id='2017-09-21-Bash-condition-to-check-if-file-is-directory'/>
+
+### 2017-09-21: Bash condition to check if file is directory
+
+The tilde as indicator for the home directory isn't interpreted right during a bash condition validation.
+
+```bash
+#: problematic condition
+if [ -d "~/directory" ]; then echo "... is a directory."; fi
+
+#: working condition
+if [ -d "$HOME/directory" ]; then echo "... is a directory."; fi
 ```
 <div id='Ansible'/>
 
