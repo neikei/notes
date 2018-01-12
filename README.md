@@ -23,6 +23,8 @@
     - [2017-07-15: Fix locale warnings on Linux servers](#2017-07-15-Fix-locale-warnings-on-Linux-servers)
     - [2017-07-15: summarizeMD](#2017-07-15-summarizeMD)
   - [Windows](#Windows)
+    - [2018-01-12: Shortcuts for virtual desktops](#2018-01-12-Shortcuts-for-virtual-desktops)
+    - [2018-01-07: Use Ubuntu Bash as Visual Studio Code Terminal](#2018-01-07-Use-Ubuntu-Bash-as-Visual-Studio-Code-Terminal)
     - [2018-01-03: ASUS Zenbook UX310UA FanControl](#2018-01-03-ASUS-Zenbook-UX310UA-FanControl)
     - [2017-12-26: Linux system administrator tools](#2017-12-26-Linux-system-administrator-tools)
     - [2017-12-15: Ubuntu Bash installation on Windows 10](#2017-12-15-Ubuntu-Bash-installation-on-Windows-10)
@@ -551,6 +553,24 @@ summarizeMD is a ruby script to create a table of contents for Markdown files. T
 <div id='Windows'/>
 
 ## Windows
+<div id='2018-01-12-Shortcuts-for-virtual-desktops'/>
+
+### 2018-01-12: Shortcuts for virtual desktops
+
+| Shortcut               | Description                              |
+|------------------------|------------------------------------------|
+| Windows + Ctrl + D     | Open a new virtual Desktop               |
+| Windows + Ctrl + Arrow | Switch between existing virtual Desktops |
+| Windows + Ctrl + F4    | Close the current virtual Desktop        |
+<div id='2018-01-07-Use-Ubuntu-Bash-as-Visual-Studio-Code-Terminal'/>
+
+### 2018-01-07: Use Ubuntu Bash as Visual Studio Code Terminal
+
+Add the following line to the user settings. [Install Ubuntu Bash](https://neikei.github.io/notes/#2017-12-15-Ubuntu-Bash-installation-on-Windows-10) if you haven't it done before.
+
+```bash
+"terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\bash.exe"
+```
 <div id='2018-01-03-ASUS-Zenbook-UX310UA-FanControl'/>
 
 ### 2018-01-03: ASUS Zenbook UX310UA FanControl
