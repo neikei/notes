@@ -8,7 +8,7 @@
   - [Ansible](https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible)
   - [Git Blame](https://marketplace.visualstudio.com/items?itemName=waderyan.gitblame)
 - [SourceTree](https://www.sourcetreeapp.com/)
-- [Ubuntu Bash](https://neikei.github.io/notes/#2017-12-15-Ubuntu-Bash-installation-on-Windows-10)
+- [Ubuntu Bash](https://github.com/neikei/notes#2017-12-15-ubuntu-bash-installation-on-windows-10)
 - [KeePassX](https://github.com/keepassx/keepassx)
 - [Virtualbox, Git and Vagrant](https://github.com/neikei/install-vagrant-on-windows)
 

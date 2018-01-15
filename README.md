@@ -562,11 +562,13 @@ summarizeMD is a ruby script to create a table of contents for Markdown files. T
 | Windows + Ctrl + D     | Open a new virtual Desktop               |
 | Windows + Ctrl + Arrow | Switch between existing virtual Desktops |
 | Windows + Ctrl + F4    | Close the current virtual Desktop        |
+
+Source: [Microsoft Windows Blog](https://blogs.windows.com/windowsexperience/2014/10/03/keyboard-shortcuts-in-the-windows-10-technical-preview/)
 <div id='2018-01-07-Use-Ubuntu-Bash-as-Visual-Studio-Code-Terminal'/>
 
 ### 2018-01-07: Use Ubuntu Bash as Visual Studio Code Terminal
 
-Add the following line to the user settings. [Install Ubuntu Bash](https://neikei.github.io/notes/#2017-12-15-Ubuntu-Bash-installation-on-Windows-10) if you haven't it done before.
+Add the following line to the user settings. [Install Ubuntu Bash](https://github.com/neikei/notes#2017-12-15-ubuntu-bash-installation-on-windows-10) if you haven't it done before.
 
 ```bash
 "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\bash.exe"
@@ -592,7 +594,7 @@ Add the following line to the user settings. [Install Ubuntu Bash](https://neike
   - [Ansible](https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible)
   - [Git Blame](https://marketplace.visualstudio.com/items?itemName=waderyan.gitblame)
 - [SourceTree](https://www.sourcetreeapp.com/)
-- [Ubuntu Bash](https://neikei.github.io/notes/#2017-12-15-Ubuntu-Bash-installation-on-Windows-10)
+- [Ubuntu Bash](https://github.com/neikei/notes#2017-12-15-ubuntu-bash-installation-on-windows-10)
 - [KeePassX](https://github.com/keepassx/keepassx)
 - [Virtualbox, Git and Vagrant](https://github.com/neikei/install-vagrant-on-windows)
 
