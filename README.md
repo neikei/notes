@@ -43,6 +43,7 @@
       - [PHP](#PHP)
       - [YAML](#YAML)
   - [Bash](#Bash)
+    - [2018-01-15: Lock function](#2018-01-15-Lock-function)
     - [2018-01-06: Simple service check](#2018-01-06-Simple-service-check)
     - [2017-12-13: Simple disk usage monitoring](#2017-12-13-Simple-disk-usage-monitoring)
     - [2017-09-21: Bash condition to check if file is directory](#2017-09-21-Bash-condition-to-check-if-file-is-directory)
@@ -955,6 +956,30 @@ done
 <div id='Bash'/>
 
 ## Bash
+<div id='2018-01-15-Lock-function'/>
+
+### 2018-01-15: Lock function
+
+Bash functions to lock and unlock a script to make sure it is only running once. The lockfile is named like the script itself but with the added .lock ending.
+
+```bash
+#!/bin/bash
+
+lock() {
+    lockFile="${0##*/}.lock"
+    if [ ! -f $lockFile ]; then
+        `touch $lockFile`;
+    else
+        echo "==> The script is already running!";
+        exit 1;
+    fi
+}
+
+unlock() {
+    lockFile="${0##*/}.lock"
+    rm $lockFile
+}
+```
 <div id='2018-01-06-Simple-service-check'/>
 
 ### 2018-01-06: Simple service check
