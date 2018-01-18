@@ -3,7 +3,7 @@
 [Screenfetch](https://github.com/KittyKatt/screenFetch) is a bash tool to display system information.
 
 ```bash
-#: Install nfs-kernel-server
+#: Install screenfetch
 neikei@workstation:~$ sudo apt install screenfetch
 
 #: Add the following line to the end of your ~/.bashrc or ~/.zshrc
