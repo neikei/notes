@@ -54,6 +54,7 @@
     - [2017-09-06: Conditionals for release versions](#2017-09-06-Conditionals-for-release-versions)
     - [2017-08-11: Identify Vagrantboxes](#2017-08-11-Identify-Vagrantboxes)
   - [Vagrant](#Vagrant)
+    - [2018-02-05: Re-sync default shared directory](#2018-02-05-Re-sync-default-shared-directory)
     - [2017-12-01: NFS share on Ubuntu](#2017-12-01-NFS-share-on-Ubuntu)
     - [2017-08-08: PHP-FPM not running after vagrant up (Vagrantbox by bento)](#2017-08-08-PHP-FPM-not-running-after-vagrant-up-Vagrantbox-by-bento)
     - [2017-07-31: Basic command list](#2017-07-31-Basic-command-list)
@@ -1208,6 +1209,17 @@ Ansible snippet to identify Vagrantboxes.
 <div id='Vagrant'/>
 
 ## Vagrant
+<div id='2018-02-05-Re-sync-default-shared-directory'/>
+
+### 2018-02-05: Re-sync default shared directory
+
+Snippet to re-sync the default shared directory between the host and a Vagrantbox managed by Virtualbox.
+
+```bash
+#: Re-sync shared directory
+neikei@workstation:~/vagrant/testing$ vagrant rsync
+==> default: Rsyncing folder: /home/neikei/vagrant/testing/ => /vagrant
+```
 <div id='2017-12-01-NFS-share-on-Ubuntu'/>
 
 ### 2017-12-01: NFS share on Ubuntu
