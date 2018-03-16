@@ -51,6 +51,7 @@
     - [2017-12-13: Simple disk usage monitoring](#2017-12-13-Simple-disk-usage-monitoring)
     - [2017-09-21: Bash condition to check if file is directory](#2017-09-21-Bash-condition-to-check-if-file-is-directory)
   - [Ansible](#Ansible)
+    - [2018-03-16: Ansible Galaxy Infrastructure](#2018-03-16-Ansible-Galaxy-Infrastructure)
     - [2018-01-02: Load variables based on distribution information](#2018-01-02-Load-variables-based-on-distribution-information)
     - [2017-09-06: Conditionals for release versions](#2017-09-06-Conditionals-for-release-versions)
     - [2017-08-11: Identify Vagrantboxes](#2017-08-11-Identify-Vagrantboxes)
@@ -1174,6 +1175,46 @@ if [ -d "$HOME/directory" ]; then echo "... is a directory."; fi
 <div id='Ansible'/>
 
 ## Ansible
+<div id='2018-03-16-Ansible-Galaxy-Infrastructure'/>
+
+### 2018-03-16: Ansible Galaxy Infrastructure
+
+[Ansible Galaxy](https://galaxy.ansible.com/) is a hub for ansible roles. I prefer generic Ansible Roles, which can be used on all parts of the infrastructure. This also avoids any misunderstandings between the development environments.
+
+*Infrastructure* overview
+
+```bash
+------------        --------------        --------------        ---------------
+| role php |        | role nginx |        | role mysql |        | role custom |
+------------        --------------        --------------        ---------------
+      |                   |                     |                     |
+      -----------------------------------------------------------------
+                                     |
+                            ------------------
+                            | Ansible Galaxy |
+                            ------------------
+                                     |
+        -------------------------------------------------------------------
+        |                       |                    |                    |
+-----------------        ---------------        -----------        --------------
+| local dev-box |        | integration |        | staging |        | production |
+-----------------        ---------------        -----------        --------------
+```
+
+Ansible roles are plugins for your different ansible projects. They are managed in the requirements.yml file and easy to install with ansible-galaxy.
+
+```yaml
+#: Installation of roles via ansible-galaxy
+ansible-galaxy install -r requirements.yml -p roles/
+
+#: Example of a requirements.yml
+- name: php
+  src: https://github.com/geerlingguy/ansible-role-php.git
+  scm: git
+  version: master
+```
+
+Thanks to [Jeff Geerling](https://github.com/geerlingguy) for the great ansible roles on Github.
 <div id='2018-01-02-Load-variables-based-on-distribution-information'/>
 
 ### 2018-01-02: Load variables based on distribution information
