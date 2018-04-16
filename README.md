@@ -23,6 +23,7 @@
     - [2017-07-15: Fix locale warnings on Linux servers](#2017-07-15-Fix-locale-warnings-on-Linux-servers)
     - [2017-07-15: summarizeMD](#2017-07-15-summarizeMD)
   - [Windows](#Windows)
+    - [2018-04-14: Kubernetes Minikube](#2018-04-14-Kubernetes-Minikube)
     - [2018-03-13: Chocolatey basics](#2018-03-13-Chocolatey-basics)
     - [2018-01-12: Shortcuts for virtual desktops](#2018-01-12-Shortcuts-for-virtual-desktops)
     - [2018-01-07: Use Ubuntu Bash as Visual Studio Code Terminal](#2018-01-07-Use-Ubuntu-Bash-as-Visual-Studio-Code-Terminal)
@@ -30,6 +31,7 @@
     - [2017-12-26: Linux system administrator tools](#2017-12-26-Linux-system-administrator-tools)
     - [2017-12-15: Ubuntu Bash installation on Windows 10](#2017-12-15-Ubuntu-Bash-installation-on-Windows-10)
   - [Continuous Integration & Continuous Delivery](#Continuous-Integration-&-Continuous-Delivery)
+    - [2018-04-16: Selfstudy Docker](#2018-04-16-Selfstudy-Docker)
     - [2018-01-30: DevOps learnings 2017](#2018-01-30-DevOps-learnings-2017)
     - [2018-01-18: Makefile for WebApps](#2018-01-18-Makefile-for-WebApps)
     - [2017-12-21: Bamboo JUnit Parser fake results for hotfixes](#2017-12-21-Bamboo-JUnit-Parser-fake-results-for-hotfixes)
@@ -559,6 +561,27 @@ summarizeMD is a ruby script to create a table of contents for Markdown files. T
 <div id='Windows'/>
 
 ## Windows
+<div id='2018-04-14-Kubernetes-Minikube'/>
+
+### 2018-04-14: Kubernetes Minikube
+
+[Minikube](https://github.com/kubernetes/minikube) is a local kubernetes environment. The following snippet shows the installation via Chocolatey and requires Virtualbox or Hyper-V installed on your computer.
+
+```bash
+#: Start Powershell as administrator
+
+#: Install Minikube and kubernetes-cli
+choco install minikube --version 0.25.2
+
+#: Start Minikube (starts a VM in Virtualbox with pre-installed Kubernetes)
+minikube start
+
+#: Start and open Kubernetes Dashboard in webbrowser
+minikube dashboard # wait a few minutes if it doesn't work at the first try
+
+#: Stop Minikube (stops the VM in Virtualbox)
+minikube stop
+```
 <div id='2018-03-13-Chocolatey-basics'/>
 
 ### 2018-03-13: Chocolatey basics
@@ -676,6 +699,13 @@ UBUNTU_CODENAME=xenial
 <div id='Continuous-Integration-&-Continuous-Delivery'/>
 
 ## Continuous Integration & Continuous Delivery
+<div id='2018-04-16-Selfstudy-Docker'/>
+
+### 2018-04-16: Selfstudy Docker
+
+[Portainer](https://portainer.io) is a simple GUI to manage Docker containers. A Vagrantbox to test the webinterface is available [here](https://github.com/neikei/dockerce-testing-environment).
+
+[Minikube](https://github.com/kubernetes/minikube) is a local kubernetes environment. Kubernetes is more complex, but has tons features and is used by the global players. Read [here](https://neikei.github.io/notes/#2018-04-14-Kubernetes-Minikube) how to start the testing environment on Windows.
 <div id='2018-01-30-DevOps-learnings-2017'/>
 
 ### 2018-01-30: DevOps learnings 2017
