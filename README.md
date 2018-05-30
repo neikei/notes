@@ -48,6 +48,7 @@
       - [PHP](#PHP)
       - [YAML](#YAML)
   - [Bash](#Bash)
+    - [2018-05-30: Array and for loop](#2018-05-30-Array-and-for-loop)
     - [2018-05-05: SSH-Agent](#2018-05-05-SSH-Agent)
     - [2018-01-15: Lock function](#2018-01-15-Lock-function)
     - [2018-01-06: Simple service check](#2018-01-06-Simple-service-check)
@@ -1130,6 +1131,20 @@ done
 <div id='Bash'/>
 
 ## Bash
+<div id='2018-05-30-Array-and-for-loop'/>
+
+### 2018-05-30: Array and for loop
+
+THe following snippet shows a simple array initialization and a for loop over each element of the array.
+
+```bash
+#!/bin/bash
+array=(a b c d e)
+for char in ${array[@]}
+do
+    echo $char
+done
+```
 <div id='2018-05-05-SSH-Agent'/>
 
 ### 2018-05-05: SSH-Agent
