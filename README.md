@@ -31,6 +31,7 @@
     - [2017-12-26: Linux system administrator tools](#2017-12-26-Linux-system-administrator-tools)
     - [2017-12-15: Ubuntu Bash installation on Windows 10](#2017-12-15-Ubuntu-Bash-installation-on-Windows-10)
   - [Continuous Integration & Continuous Delivery](#Continuous-Integration-&-Continuous-Delivery)
+    - [2018-06-07: Configuration management](#2018-06-07-Configuration-management)
     - [2018-04-16: Selfstudy Docker](#2018-04-16-Selfstudy-Docker)
     - [2018-01-30: DevOps learnings 2017](#2018-01-30-DevOps-learnings-2017)
     - [2018-01-18: Makefile for WebApps](#2018-01-18-Makefile-for-WebApps)
@@ -701,6 +702,27 @@ UBUNTU_CODENAME=xenial
 <div id='Continuous-Integration-&-Continuous-Delivery'/>
 
 ## Continuous Integration & Continuous Delivery
+<div id='2018-06-07-Configuration-management'/>
+
+### 2018-06-07: Configuration management
+
+Configuration management is an exciting topic in computer science. The following graphic gives a small insight into how configuration management can be implemented with
+[iTop](https://www.itophub.io/wiki/page) as CMDB, [Ansible](https://www.ansible.com/) for the provisioning and [Check_MK](https://mathias-kettner.com/check_mk.html) for the monitoring. There are further open source projects like [itop-utilities](https://github.com/jaimevalero/itop-utilities) to export the data of the CMDB and transfer
+it to Ansible readable data.
+
+*Infrastructure* overview
+
+```bash
+                              -----------
+                      ------->| Ansible |--------
+                     |        -----------        |
+-------------        |                           |        ------------------
+| iTop CMDB |--------                             ------->| Managed server |
+-------------        |                           |        ------------------
+                     |        ------------       |
+                      ------->| Check_MK |--------
+                              ------------
+```
 <div id='2018-04-16-Selfstudy-Docker'/>
 
 ### 2018-04-16: Selfstudy Docker
